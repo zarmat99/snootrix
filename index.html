@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SNOOTRIX Face Editor: draw LED visor faces</title>
+<meta name="description" content="Free face editor for LED visors: draw on two 64×32 panels, make the mouth follow your voice and boop the snoot. Runs in your browser: no sign-up, no AI, nothing uploaded.">
+<meta name="theme-color" content="#0b0716">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SNOOTRIX Face Editor">
+<meta property="og:description" content="Draw LED visor faces, talk and watch the mouth move, boop the snoot. Free, right in your browser.">
+<meta property="og:image" content="https://zarmat99.github.io/snootrix/og.jpg">
+<meta property="og:url" content="https://zarmat99.github.io/snootrix/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./" aria-label="SNOOTRIX face editor">
+    <span class="logo">SNOOTRIX</span><span class="tag">face editor</span>
+  </a>
+  <a class="btn cta-mini" data-waitlist target="_blank" rel="noopener">Join the waitlist</a>
+</header>
+
+<main class="app">
+  <section class="stage" aria-label="Visor preview">
+    <div class="view3d" id="view3d"><div class="loading" id="loading">Powering up the visor…</div></div>
+    <div class="stage-bar">
+      <button class="btn pill pink" id="btnBoop" title="Boop the snoot (space bar)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.2 0 3.6 1.2 4.4 2.4h2C13.8 6.2 15.2 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>
+        Boop</button>
+      <button class="btn pill" id="btnMic" aria-pressed="false" title="Make the mouth follow your voice">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 0 0-7 0v6A3.5 3.5 0 0 0 12 15zm6-3.5a6 6 0 0 1-12 0H4.2A7.8 7.8 0 0 0 11 19.2V22h2v-2.8a7.8 7.8 0 0 0 6.8-7.7z"/></svg>
+        <span>Talk</span></button>
+      <button class="btn icon" id="btnReset" aria-label="Reset the view" title="Reset the view">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
+    </div>
+    <p class="hint" id="hint">Drag to look around · tap the head to boop it</p>
+  </section>
+
+  <section class="panel">
+    <nav class="tabs" role="tablist" aria-label="Editor sections">
+      <button role="tab" aria-selected="true" data-tab="draw">Draw</button>
+      <button role="tab" aria-selected="false" data-tab="faces">Faces</button>
+      <button role="tab" aria-selected="false" data-tab="fx">Effects</button>
+      <button role="tab" aria-selected="false" data-tab="share">Share</button>
+    </nav>
+
+    <div class="tab" id="tab-draw" role="tabpanel">
+      <div class="toolbar" role="toolbar" aria-label="Drawing tools">
+        <div class="group">
+          <button class="btn icon" data-tool="pen" aria-label="Pen (B)" title="Pen (B)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.3V21h3.7L17.8 9.9l-3.7-3.7zM20.7 7a1 1 0 0 0 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.7 3.7z"/></svg></button>
+          <button class="btn icon" data-tool="erase" aria-label="Eraser (E)" title="Eraser (E)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.2 3.6l4.2 4.2a2 2 0 0 1 0 2.8L12 19h8v2H8.4l-4.8-4.8a2 2 0 0 1 0-2.8l9.8-9.8a2 2 0 0 1 2.8 0zM5 15l4 4h.2l3.5-3.5-4.2-4.2z"/></svg></button>
+          <button class="btn icon" data-tool="fill" aria-label="Fill (F)" title="Fill (F)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 8.9L7.7 0 6.3 1.4l2.4 2.4-5.2 5.1a1.5 1.5 0 0 0 0 2.1l5.5 5.5a1.5 1.5 0 0 0 2.1 0l5.5-5.5a1.5 1.5 0 0 0 0-2.1zM5.2 10L10 5.2 14.8 10zM19 11.5s-2 2.2-2 3.5a2 2 0 0 0 4 0c0-1.3-2-3.5-2-3.5zM2 20h20v4H2z"/></svg></button>
+          <button class="btn icon" data-tool="pick" aria-label="Colour picker (I)" title="Colour picker (I)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 5.6l-2.3-2.3a1 1 0 0 0-1.4 0l-3.1 3.1-1.9-1.9-1.4 1.4 1.4 1.4L3 16.3V21h4.7l9-9 1.4 1.4 1.4-1.4-1.9-1.9 3.1-3.1a1 1 0 0 0 0-1.4zM6.9 19H5v-1.9l8.1-8.1 1.9 1.9z"/></svg></button>
+        </div>
+        <div class="group brush" aria-label="Brush size">
+          <button class="btn icon" data-brush="1" aria-label="Brush 1 pixel"><i style="--d:4px"></i></button>
+          <button class="btn icon" data-brush="2" aria-label="Brush 2 pixels"><i style="--d:8px"></i></button>
+          <button class="btn icon" data-brush="3" aria-label="Brush 3 pixels"><i style="--d:12px"></i></button>
+        </div>
+        <div class="group">
+          <button class="btn icon" id="btnUndo" aria-label="Undo (Ctrl+Z)" title="Undo (Ctrl+Z)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.5 8c-2.6 0-5 1-6.9 2.6L2 7v9h9l-3.6-3.6A8 8 0 0 1 20.1 16l2.4-.8A10.5 10.5 0 0 0 12.5 8z"/></svg></button>
+          <button class="btn icon" id="btnRedo" aria-label="Redo (Ctrl+Y)" title="Redo (Ctrl+Y)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.4 10.6A10.5 10.5 0 0 0 1.5 15.2l2.4.8A8 8 0 0 1 16.6 12.4L13 16h9V7z"/></svg></button>
+          <button class="btn icon" id="btnClear" aria-label="Clear the panels" title="Clear">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"/></svg></button>
+        </div>
+      </div>
+      <div class="palette" id="palette" role="group" aria-label="Colours"></div>
+      <div class="grid-head">
+        <button class="btn chip" id="btnMirror" aria-pressed="true" title="Mirror (M): both panels match">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2h2v20h-2zM9 6L3 18h6zm6 0v12h6z"/></svg>Mirror</button>
+        <button class="btn chip" id="btnView">Right panel</button>
+        <span class="spacer"></span>
+        <button class="btn icon sm" id="btnZoomOut" aria-label="Zoom out">−</button>
+        <button class="btn icon sm" id="btnZoomIn" aria-label="Zoom in">+</button>
+      </div>
+      <div class="grid-wrap" id="gridWrap"></div>
+      <p class="small muted" id="gridHint"></p>
+    </div>
+
+    <div class="tab" id="tab-faces" role="tabpanel" hidden>
+      <h2>Ready-made faces</h2>
+      <div class="faces" id="presetList"></div>
+      <div class="row">
+        <h2>My faces</h2>
+        <button class="btn chip" id="btnSave">Save current face</button>
+      </div>
+      <div class="faces" id="savedList"></div>
+    </div>
+
+    <div class="tab" id="tab-fx" role="tabpanel" hidden>
+      <h2>Mouth</h2>
+      <div class="seg" data-seg="mouth" role="group" aria-label="Mouth">
+        <button data-v="off">Still</button>
+        <button data-v="open">Opens when you talk</button>
+        <button data-v="wave">Voice wave</button>
+      </div>
+      <label class="slider">Microphone sensitivity <input type="range" id="sens" min="0" max="1" step="0.05"></label>
+      <p class="small muted">The microphone is analysed in your browser, frame by frame. Nothing is recorded or sent.</p>
+      <h2>Eyes</h2>
+      <label class="switch"><input type="checkbox" id="blink"> <span>Blink now and then</span></label>
+      <h2>Colours</h2>
+      <div class="seg" data-seg="colorMode" role="group" aria-label="Colour effect">
+        <button data-v="drawn">As drawn</button>
+        <button data-v="rainbow">Rainbow</button>
+        <button data-v="pulse">Pulse</button>
+      </div>
+      <label class="slider">Brightness <input type="range" id="bright" min="0.3" max="1.4" step="0.05"></label>
+    </div>
+
+    <div class="tab" id="tab-share" role="tabpanel" hidden>
+      <h2>Share your face</h2>
+      <div class="share-buttons">
+        <button class="btn big" id="btnImage">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/></svg>
+          Save image</button>
+        <button class="btn big" id="btnLink">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0zM7.8 17.7a3 3 0 0 1-4.2-4.2l2.8-2.8 1.4 1.4-2.8 2.8a1 1 0 0 0 1.4 1.4l2.8-2.8 1.4 1.4zm8.5-6.4l-1.4-1.4 2.8-2.8a1 1 0 0 0-1.4-1.4l-2.8 2.8-1.4-1.4 2.8-2.8a3 3 0 0 1 4.2 4.2z"/></svg>
+          Copy link</button>
+      </div>
+      <p class="small muted">The image is a portrait card, ready for Instagram, Bluesky or Discord. The link opens this editor with your face on it.</p>
+      <div class="cta-card">
+        <h2>Want it on your real visor?</h2>
+        <p>I'm building <b>SNOOTRIX</b>, a plug &amp; play controller board for LED visors: two HUB75 panels, a mouth that follows your voice, a boop sensor, fans, power from a USB-C power bank. No soldering, no coding. It's a prototype in development and nothing is for sale yet.</p>
+        <a class="btn pill pink" data-waitlist target="_blank" rel="noopener">Join the free waitlist</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="about">
+  <h2>About</h2>
+  <p>A free tool by Matteo, an independent electronics maker in Italy. The 3D head and the faces are original designs, made in code and Blender: no AI images. This page runs entirely in your browser: your drawings stay on your device and the microphone is never recorded.</p>
+  <p class="links">
+    <a href="https://www.instagram.com/snootrix/" target="_blank" rel="noopener">Instagram @snootrix</a> ·
+    <a href="https://bsky.app/profile/snootrix.bsky.social" target="_blank" rel="noopener">Bluesky</a> ·
+    <a data-waitlist target="_blank" rel="noopener">Waitlist</a>
+  </p>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
