@@ -1,4 +1,4 @@
-SNOOTRIX Face Editor uses the following open source software.
+SNOOTRIX Face Editor uses the following open source software and 3D models.
 
 -------------------------------------------------------------------------------
 three.js 0.186.1 (including OrbitControls, GLTFLoader and the post-processing
@@ -52,3 +52,15 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+-------------------------------------------------------------------------------
+3D model: "Protogen M16 mk3" V1.2.2 by M16 Studios
+https://www.thingiverse.com/thing:4894173
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Changes made for this editor: the assembled parts were merged by material,
+simplified to about 74,000 triangles and scaled; the mannequin head, the visor
+moulds, the 8x8 matrix frame and modules were left out. The two LED panels are
+drawn where the design's "matrix L/R" parts are (192 x 96 mm, two HUB75 P3
+panels), with the face shown live on them.

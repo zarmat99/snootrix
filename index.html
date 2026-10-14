@@ -26,7 +26,14 @@
 
 <main class="app">
   <section class="stage" aria-label="Visor preview">
+    <div class="view-wrap">
     <div class="view3d" id="view3d"><div class="loading" id="loading">Powering up the visor…</div></div>
+    <div class="head-pick" id="headPick" hidden>
+      <select id="headSel" aria-label="Choose the 3D head">
+        <option value="snootrix">Head: SNOOTRIX concept</option>
+        <option value="mk3">Head: M16 MK3 · 2× P3 panels</option>
+      </select>
+    </div>
     <div class="stage-bar">
       <button class="btn pill pink" id="btnBoop" title="Boop the snoot (space bar)">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.2 0 3.6 1.2 4.4 2.4h2C13.8 6.2 15.2 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>
@@ -37,7 +44,9 @@
       <button class="btn icon" id="btnReset" aria-label="Reset the view" title="Reset the view">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
     </div>
+    </div>
     <p class="hint" id="hint">Drag to look around · tap the head to boop it</p>
+    <p class="credit" id="headCredit" hidden></p>
   </section>
 
   <section class="panel">
@@ -157,7 +166,7 @@
 
 <section class="about">
   <h2>About</h2>
-  <p>A free tool by Matteo, an independent electronics maker in Italy. The 3D head and the faces are original designs, made in code and Blender: no AI images. This page runs entirely in your browser: your drawings stay on your device and the microphone is never recorded.</p>
+  <p>A free tool by Matteo, an independent electronics maker in Italy. The SNOOTRIX concept head and the faces are original designs, made in code and Blender: no AI images. The M16 mk3 head is <a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3” by M16 Studios</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY</a>: simplified for the web, with two HUB75 P3 panels shown where its design places them. This page runs entirely in your browser: your drawings stay on your device and the microphone is never recorded.</p>
   <p class="links">
     <a href="https://www.instagram.com/snootrix/" target="_blank" rel="noopener">Instagram @snootrix</a> ·
     <a href="https://bsky.app/profile/snootrix.bsky.social" target="_blank" rel="noopener">Bluesky</a> ·
