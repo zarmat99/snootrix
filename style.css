@@ -179,7 +179,8 @@ input[type="range"] { width: 100%; accent-color: var(--cyan); }
 .switch input { width: 20px; height: 20px; accent-color: var(--cyan); }
 
 /* ---------- share ---------- */
-.share-buttons { display: flex; gap: 10px; }
+.share-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-buttons .btn.big { flex: 1 1 calc(33% - 10px); min-width: 0; }   /* a fourth button (MAX7219) wraps instead of overflowing on phones */
 .cta-card {
   margin-top: 18px; padding: 16px; border-radius: var(--radius);
   background: linear-gradient(160deg, rgba(255, 70, 170, 0.16), rgba(40, 225, 255, 0.1));

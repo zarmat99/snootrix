@@ -32,6 +32,7 @@
       <select id="headSel" aria-label="Choose the 3D head">
         <option value="snootrix">Head: SNOOTRIX concept</option>
         <option value="mk3">Head: M16 MK3 · 2× P3 panels</option>
+        <option value="mk3max">Head: M16 MK3 · 14× MAX7219</option>
       </select>
     </div>
     <div class="stage-bar">
@@ -153,8 +154,12 @@
         <button class="btn big" id="btnC">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 16.6L4 12l4.6-4.6L7.2 6 1.2 12l6 6zm6.8 0L20 12l-4.6-4.6L16.8 6l6 6-6 6z"/></svg>
           C array (Arduino / ESP32)</button>
+        <button class="btn big" id="btnMax" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 16.6L4 12l4.6-4.6L7.2 6 1.2 12l6 6zm6.8 0L20 12l-4.6-4.6L16.8 6l6 6-6 6z"/></svg>
+          MAX7219 bytes (Arduino)</button>
       </div>
       <p class="small muted">One value per LED, both 64×32 panels side by side (left panel first), black = off. PNG for image converters such as the ProtoTracer Helper; BMP for CircuitPython boards such as the Adafruit Matrix Portal; C array (RGB565) for Arduino or ESP32 sketches with Adafruit GFX or the HUB75 DMA library: <code>drawRGBBitmap(0, 0, snootrix_face, 128, 32)</code>.</p>
+      <p class="small muted" id="maxNote" hidden>MAX7219 bytes: the face as the 14 modules of the M16 MK3 show it, 8 bytes per module (rows from the top, bit 7 = the leftmost LED seen from the front), for sketches with LedControl or MD_MAX72xx. Depending on how your modules are mounted you may need to flip or rotate them.</p>
       <div class="cta-card">
         <h2>Want it on your real visor?</h2>
         <p>I'm building <b>SNOOTRIX</b>, a plug &amp; play controller board for LED visors: two HUB75 panels, a mouth that follows your voice, a boop sensor, fans, power from a USB-C power bank. No soldering, no coding. It's a prototype in development and nothing is for sale yet.</p>
