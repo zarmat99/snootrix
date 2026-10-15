@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SNOOTRIX Face Editor: draw LED visor faces</title>
-<meta name="description" content="Free face editor for LED visors: draw on two 64×32 panels, make the mouth follow your voice and boop the snoot. Runs in your browser: no sign-up, no AI, nothing uploaded.">
+<title>SNOOTRIX Face Editor: draw protogen LED visor faces</title>
+<meta name="description" content="Free face editor for protogen LED visors: draw on two 64×32 panels, make the mouth follow your voice and boop the snoot. Runs in your browser: no sign-up, no AI, nothing uploaded.">
 <meta name="theme-color" content="#0b0716">
 <meta property="og:type" content="website">
-<meta property="og:title" content="SNOOTRIX Face Editor">
-<meta property="og:description" content="Draw LED visor faces, talk and watch the mouth move, boop the snoot. Free, right in your browser.">
+<meta property="og:title" content="SNOOTRIX Face Editor for protogen visors">
+<meta property="og:description" content="Draw protogen LED visor faces, talk and watch the mouth move, boop the snoot. Free, right in your browser.">
 <meta property="og:image" content="https://zarmat99.github.io/snootrix/og.jpg">
 <meta property="og:url" content="https://zarmat99.github.io/snootrix/">
 <meta name="twitter:card" content="summary_large_image">
@@ -37,6 +37,7 @@
         <option value="snootrix">Head: SNOOTRIX concept</option>
         <option value="mk3">Head: M16 MK3 · 2× P3 panels</option>
         <option value="mk3max">Head: M16 MK3 · 14× MAX7219</option>
+        <option value="mk2max">Head: M16 MK2 · 11× MAX7219</option>
         <option disabled>──────────</option>
         <option value="ask">Your head isn't here? Tell me →</option>
       </select>
@@ -166,7 +167,7 @@
       </div>
       <p class="small muted max-off" id="maxOff"><span id="maxOffText">MAX7219 bytes need a head with MAX7219 modules.</span> <button type="button" class="linkbtn" id="btnUseMax">Switch to M16 MK3 · 14× MAX7219</button></p>
       <p class="small muted">One value per LED, both 64×32 panels side by side (left panel first), black = off. PNG for image converters such as the ProtoTracer Helper; BMP for CircuitPython boards such as the Adafruit Matrix Portal; C array (RGB565) for Arduino or ESP32 sketches with Adafruit GFX or the HUB75 DMA library: <code>drawRGBBitmap(0, 0, snootrix_face, 128, 32)</code>.</p>
-      <p class="small muted" id="maxNote" hidden>MAX7219 bytes: the face as the 14 modules of the M16 MK3 show it, 8 bytes per module (rows from the top, bit 7 = the leftmost LED seen from the front), for sketches with LedControl or MD_MAX72xx. Depending on how your modules are mounted you may need to flip or rotate them.</p>
+      <p class="small muted" id="maxNote" hidden>MAX7219 bytes: the face as <span id="maxNoteHead">the 14 modules of the M16 MK3</span> show it, 8 bytes per module<span id="maxNoteOrder"></span> (rows from the top, bit 7 = the leftmost LED seen from the front), for sketches with LedControl or MD_MAX72xx. Depending on how your modules are mounted you may need to flip or rotate them.</p>
       <div class="cta-card">
         <h2>Want it on your real visor?</h2>
         <p>I'm building <b>SNOOTRIX</b>, a plug &amp; play controller board for LED visors: two HUB75 panels, a mouth that follows your voice, a boop sensor, fans, power from a USB-C power bank. No soldering, no coding. It's a prototype in development and nothing is for sale yet.</p>
@@ -178,7 +179,7 @@
 
 <section class="about">
   <h2>About</h2>
-  <p>A free tool by Matteo, an independent electronics maker in Italy. The SNOOTRIX concept head and the faces are original designs, made in code and Blender: no AI images. The M16 mk3 head is <a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3” by M16 Studios</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY</a>: simplified for the web, with two HUB75 P3 panels shown where its design places them. This page runs entirely in your browser: your drawings stay on your device and the microphone is never recorded. Visits are counted anonymously with Umami (EU servers, no cookies, no personal data), only to know how many people use the editor; open this page once with <code>?notrack</code> at the end of the address to switch it off on your device.</p>
+  <p>A free tool by Matteo, an independent electronics maker in Italy. The SNOOTRIX concept head and the faces are original designs, made in code and Blender: no AI images. The M16 mk3 head is <a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3” by M16 Studios</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY</a>: simplified for the web, with two HUB75 P3 panels shown where its design places them. The M16 mk2 head is <a href="https://www.thingiverse.com/thing:4865223" target="_blank" rel="noopener">“Protogen M16 mk2” V1.6.0 by M16 Studios</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY</a>: simplified for the web, with its 11 MAX7219 modules shown where its design places them. This page runs entirely in your browser: your drawings stay on your device and the microphone is never recorded. Visits are counted anonymously with Umami (EU servers, no cookies, no personal data), only to know how many people use the editor; open this page once with <code>?notrack</code> at the end of the address to switch it off on your device.</p>
   <p class="links">
     <a href="https://www.instagram.com/snootrix/" target="_blank" rel="noopener">Instagram @snootrix</a> ·
     <a data-waitlist target="_blank" rel="noopener" data-umami-event="waitlist" data-umami-event-where="about">Waitlist</a>

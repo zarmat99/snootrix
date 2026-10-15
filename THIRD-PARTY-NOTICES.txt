@@ -64,3 +64,19 @@ simplified to about 74,000 triangles and scaled; the mannequin head, the visor
 moulds, the 8x8 matrix frame and modules were left out. The two LED panels are
 drawn where the design's "matrix L/R" parts are (192 x 96 mm, two HUB75 P3
 panels), with the face shown live on them.
+
+-------------------------------------------------------------------------------
+3D model: "Protogen M16 mk2" V1.6.0 by M16 Studios
+https://www.thingiverse.com/thing:4865223
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Changes made for this editor: the one-piece base (FRAME_COMBINED), the front
+frame (FRONT_FRAME) and the ear rings (FRAME_OVERLAY) were placed together with
+the screw holes of the ear rings, the base was cut at the middle and mirrored to
+fit the front frame, the visor was made from the outer surface of the visor mould
+(MASTER_MODEL_2, 2 mm thick, trimmed around the ear rings and under the base
+rim), dark discs were added in the ear rings, and everything was simplified to
+about 67,000 triangles and scaled. The 11 MAX7219 8x8 modules (3 for the mouth
+and 2 for the eye on each cheek, 1 nose) are drawn where the design places them,
+with the face shown live on them.
