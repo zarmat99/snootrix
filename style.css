@@ -81,6 +81,14 @@ svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
 .btn.chip { border-radius: 10px; padding: 7px 11px; min-height: 34px; font-size: 13px; }
 .btn.chip svg { width: 16px; height: 16px; }
 .btn.big { border-radius: var(--radius); padding: 16px; flex: 1; font-size: 15px; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn:disabled:hover { border-color: var(--line); }
+.btn:disabled:active { transform: none; }
+.linkbtn { all: unset; color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.linkbtn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 4px; }
+.max-off { margin-top: 10px; }
+/* the hidden attribute must win over display rules such as .btn's inline-flex */
+[hidden] { display: none !important; }
 #btnMic.live { border-color: var(--pink); color: #ffd6ec; box-shadow: 0 0 16px rgba(255, 70, 170, 0.45); }
 #btnMic.live svg { animation: pulse 1s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: 0.45; } }
