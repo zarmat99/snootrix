@@ -15,13 +15,17 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="stylesheet" href="style.css">
+<!-- Anonymous visit counts (Umami Cloud, EU servers, no cookies), only on the public site. ?noi or ?notrack once switches
+     them off on a device (our own phones, PCs and tests), ?track switches them back on; this runs before the counter. -->
+<script>try { var q = new URLSearchParams(location.search); if (q.has('noi') || q.has('notrack')) localStorage.setItem('umami.disabled', '1'); if (q.has('track')) localStorage.removeItem('umami.disabled'); } catch (e) {}</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="9cf422e5-390b-4a6d-81a8-bd9c40a7f9de" data-domains="zarmat99.github.io"></script>
 </head>
 <body>
 <header class="top">
   <a class="brand" href="./" aria-label="SNOOTRIX face editor">
     <span class="logo">SNOOTRIX</span><span class="tag">face editor</span>
   </a>
-  <a class="btn cta-mini" data-waitlist target="_blank" rel="noopener">Join the waitlist</a>
+  <a class="btn cta-mini" data-waitlist target="_blank" rel="noopener" data-umami-event="waitlist" data-umami-event-where="header">Join the waitlist</a>
 </header>
 
 <main class="app">
@@ -41,7 +45,7 @@
       <button class="btn pill pink" id="btnBoop" title="Boop the snoot (space bar)">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.2 0 3.6 1.2 4.4 2.4h2C13.8 6.2 15.2 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>
         Boop</button>
-      <button class="btn pill" id="btnMic" aria-pressed="false" title="Make the mouth follow your voice">
+      <button class="btn pill" id="btnMic" data-umami-event="talk" aria-pressed="false" title="Make the mouth follow your voice">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 0 0-7 0v6A3.5 3.5 0 0 0 12 15zm6-3.5a6 6 0 0 1-12 0H4.2A7.8 7.8 0 0 0 11 19.2V22h2v-2.8a7.8 7.8 0 0 0 6.8-7.7z"/></svg>
         <span>Talk</span></button>
       <button class="btn icon" id="btnReset" aria-label="Reset the view" title="Reset the view">
@@ -137,26 +141,26 @@
     <div class="tab" id="tab-share" role="tabpanel" hidden>
       <h2>Share your face</h2>
       <div class="share-buttons">
-        <button class="btn big" id="btnImage">
+        <button class="btn big" id="btnImage" data-umami-event="share" data-umami-event-type="image">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/></svg>
           Save image</button>
-        <button class="btn big" id="btnLink">
+        <button class="btn big" id="btnLink" data-umami-event="share" data-umami-event-type="link">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0zM7.8 17.7a3 3 0 0 1-4.2-4.2l2.8-2.8 1.4 1.4-2.8 2.8a1 1 0 0 0 1.4 1.4l2.8-2.8 1.4 1.4zm8.5-6.4l-1.4-1.4 2.8-2.8a1 1 0 0 0-1.4-1.4l-2.8 2.8-1.4-1.4 2.8-2.8a3 3 0 0 1 4.2 4.2z"/></svg>
           Copy link</button>
       </div>
       <p class="small muted">The image is a portrait card, ready for Instagram, Bluesky or Discord. The link opens this editor with your face on it.</p>
       <h2>For your firmware</h2>
       <div class="share-buttons">
-        <button class="btn big" id="btnPng">
+        <button class="btn big" id="btnPng" data-umami-event="export" data-umami-event-type="png">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5zM12 16l5-5-1.4-1.4L13 12.2V4h-2v8.2L8.4 9.6 7 11z"/></svg>
           Pixel PNG (128×32)</button>
-        <button class="btn big" id="btnBmp">
+        <button class="btn big" id="btnBmp" data-umami-event="export" data-umami-event-type="bmp">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5zM12 16l5-5-1.4-1.4L13 12.2V4h-2v8.2L8.4 9.6 7 11z"/></svg>
           BMP (Matrix Portal)</button>
-        <button class="btn big" id="btnC">
+        <button class="btn big" id="btnC" data-umami-event="export" data-umami-event-type="c-array">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 16.6L4 12l4.6-4.6L7.2 6 1.2 12l6 6zm6.8 0L20 12l-4.6-4.6L16.8 6l6 6-6 6z"/></svg>
           C array (Arduino / ESP32)</button>
-        <button class="btn big" id="btnMax" disabled aria-describedby="maxOff">
+        <button class="btn big" id="btnMax" data-umami-event="export" data-umami-event-type="max7219" disabled aria-describedby="maxOff">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 16.6L4 12l4.6-4.6L7.2 6 1.2 12l6 6zm6.8 0L20 12l-4.6-4.6L16.8 6l6 6-6 6z"/></svg>
           MAX7219 bytes (Arduino)</button>
       </div>
@@ -166,7 +170,7 @@
       <div class="cta-card">
         <h2>Want it on your real visor?</h2>
         <p>I'm building <b>SNOOTRIX</b>, a plug &amp; play controller board for LED visors: two HUB75 panels, a mouth that follows your voice, a boop sensor, fans, power from a USB-C power bank. No soldering, no coding. It's a prototype in development and nothing is for sale yet.</p>
-        <a class="btn pill pink" data-waitlist target="_blank" rel="noopener">Join the free waitlist</a>
+        <a class="btn pill pink" data-waitlist target="_blank" rel="noopener" data-umami-event="waitlist" data-umami-event-where="card">Join the free waitlist</a>
       </div>
     </div>
   </section>
@@ -174,11 +178,11 @@
 
 <section class="about">
   <h2>About</h2>
-  <p>A free tool by Matteo, an independent electronics maker in Italy. The SNOOTRIX concept head and the faces are original designs, made in code and Blender: no AI images. The M16 mk3 head is <a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3” by M16 Studios</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY</a>: simplified for the web, with two HUB75 P3 panels shown where its design places them. This page runs entirely in your browser: your drawings stay on your device and the microphone is never recorded.</p>
+  <p>A free tool by Matteo, an independent electronics maker in Italy. The SNOOTRIX concept head and the faces are original designs, made in code and Blender: no AI images. The M16 mk3 head is <a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3” by M16 Studios</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY</a>: simplified for the web, with two HUB75 P3 panels shown where its design places them. This page runs entirely in your browser: your drawings stay on your device and the microphone is never recorded. Visits are counted anonymously with Umami (EU servers, no cookies, no personal data), only to know how many people use the editor; open this page once with <code>?notrack</code> at the end of the address to switch it off on your device.</p>
   <p class="links">
     <a href="https://www.instagram.com/snootrix/" target="_blank" rel="noopener">Instagram @snootrix</a> ·
     <a href="https://bsky.app/profile/snootrix.bsky.social" target="_blank" rel="noopener">Bluesky</a> ·
-    <a data-waitlist target="_blank" rel="noopener">Waitlist</a>
+    <a data-waitlist target="_blank" rel="noopener" data-umami-event="waitlist" data-umami-event-where="about">Waitlist</a>
   </p>
 </section>
 
