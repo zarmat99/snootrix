@@ -129,6 +129,42 @@ svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
 .credit { margin: 3px 0 0; text-align: center; font-size: 11px; line-height: 1.35; color: var(--muted); }
 .credit a { color: inherit; }
 
+/* the SNOOTRIX board in one line, under the 3D head (idea 27) */
+.riga {
+  margin: 10px 0 0; padding: 11px 12px 12px 14px;
+  border: 1px solid transparent; border-radius: var(--radius);
+  background:
+    linear-gradient(160deg, rgba(38, 19, 62, 0.97), rgba(19, 12, 40, 0.97)) padding-box,
+    linear-gradient(110deg, rgba(255, 70, 170, 0.75), rgba(40, 225, 255, 0.6)) border-box;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35), 0 0 18px rgba(255, 70, 170, 0.1);
+}
+.riga-x {
+  float: right; width: 34px; height: 34px; margin: -7px -7px 2px 6px; padding: 0;
+  display: grid; place-items: center; border: 0; border-radius: 50%;
+  background: none; color: var(--muted); cursor: pointer;
+}
+.riga-x svg { width: 15px; height: 15px; }
+.riga-x:hover { color: var(--text); background: rgba(170, 150, 235, 0.14); }
+.riga-x:focus-visible { outline: 2px solid var(--cyan); outline-offset: 0; }
+.riga-tag {
+  margin: 0 0 4px; font-size: 10.5px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #bff6ff; text-shadow: 0 0 6px rgba(40, 225, 255, 0.75);
+}
+.riga-text { margin: 0 0 10px; font-size: 14.5px; line-height: 1.4; color: #f1ecff; text-wrap: pretty; }
+.riga-act { clear: both; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.riga-cta { padding: 9px 17px; min-height: 38px; font-size: 14px; }
+.riga-fine { flex: 1 1 130px; font-size: 12px; line-height: 1.3; color: var(--muted); }
+.riga-text.swap { animation: riga-in 0.45s ease-out; }
+.riga.mic { box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35), 0 0 24px rgba(255, 70, 170, 0.3); animation: riga-glow 1.8s ease-out; }
+@keyframes riga-in { from { opacity: 0; transform: translateY(4px); } }
+@keyframes riga-glow { 30% { box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35), 0 0 38px rgba(255, 70, 170, 0.65); } }
+/* Tally's waitlist popup on phones: wider and taller than Tally's own (100% - 40 px, 70% of the height), so more of
+   the list shows, as on its page */
+@media (max-width: 576px) {
+  .tally-popup { max-width: calc(100% - 24px) !important; }
+  .tally-popup iframe { max-height: 84vh !important; max-height: 84dvh !important; }
+}
+
 .panel {
   background: rgba(21, 14, 41, 0.86); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 10px 12px 14px;
@@ -216,6 +252,15 @@ input[type="range"] { width: 100%; accent-color: var(--cyan); }
   .app { grid-template-columns: minmax(0, 1.1fr) minmax(420px, 0.9fr); align-items: start; padding-top: 18px; }
   .stage { position: sticky; top: 72px; }
   .view3d { aspect-ratio: 4 / 3.4; max-height: calc(100vh - 140px); }
+  .stage.with-riga .view3d { max-height: calc(100vh - 236px); }   /* the line under the head stays in the window */
+  /* the line in two columns: words on the left, the button on the right */
+  .riga { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 20px; align-items: center; padding: 12px 46px 12px 16px; }
+  .riga-x { position: absolute; top: 6px; right: 6px; margin: 0; float: none; }
+  .riga-tag, .riga-text, .riga-fine { grid-column: 1; }
+  .riga-text { margin: 0; }
+  .riga-act { display: contents; }
+  .riga-cta { grid-column: 2; grid-row: 1 / span 3; }
+  .riga-fine { margin-top: 5px; }
 }
 @media (max-width: 380px) {
   .tag { display: none; }
