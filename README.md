@@ -1,6 +1,6 @@
 # SNOOTRIX Face Editor
 
-Draw faces for a protogen LED visor (two 64×32 panels), watch them live on a 3D head, talk and see the mouth move, boop the snoot, and share your face as a link or an image.
+Draw faces for a protogen LED visor (two 64×32 HUB75 panels or a chain of MAX7219 8×8 modules), animate them (Blink, Talk and Boop make the frames for you, or draw frame by frame), watch them live on a 3D head, talk and see the mouth move, boop the snoot, and export them for your firmware (PNG, BMP, animated GIF, C arrays, MAX7219 bytes) or share them as a link or an image.
 
 **Open it: https://zarmat99.github.io/snootrix/**
 
