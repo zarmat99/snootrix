@@ -158,6 +158,29 @@ svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
 .riga.mic { box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35), 0 0 24px rgba(255, 70, 170, 0.3); animation: riga-glow 1.8s ease-out; }
 @keyframes riga-in { from { opacity: 0; transform: translateY(4px); } }
 @keyframes riga-glow { 30% { box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35), 0 0 38px rgba(255, 70, 170, 0.65); } }
+/* the same line under the buttons of the first export of a visit (idea 40) */
+.riga.riga-export { margin: 12px 0 4px; }
+.riga.riga-export.in { animation: riga-in 0.45s ease-out; }
+
+/* in the apps' own browsers (Instagram, Facebook, Messenger, TikTok) an export shows how to get out instead (idea 40):
+   at the top, near the app's ••• menu */
+.inapp {
+  position: fixed; z-index: 30; top: calc(10px + env(safe-area-inset-top)); left: 50%; transform: translateX(-50%);
+  width: min(460px, calc(100vw - 24px)); padding: 14px 16px;
+  border: 1px solid transparent; border-radius: var(--radius);
+  background:
+    linear-gradient(160deg, rgba(38, 19, 62, 0.98), rgba(19, 12, 40, 0.98)) padding-box,
+    linear-gradient(110deg, rgba(255, 190, 60, 0.85), rgba(255, 70, 170, 0.7)) border-box;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.6);
+}
+.inapp-title { margin: 0 0 6px; font-size: 15.5px; font-weight: 700; color: #fff; }
+.inapp-how { margin: 0 0 6px; font-size: 14.5px; line-height: 1.4; color: #f1ecff; text-wrap: pretty; }
+.inapp-how b { color: #ffd98a; white-space: nowrap; }
+.inapp-or { margin: 0 0 12px; font-size: 13px; line-height: 1.35; color: var(--muted); }
+.inapp-act { display: flex; gap: 10px; justify-content: flex-end; }
+.inapp-act .btn { min-height: 40px; padding: 9px 18px; }
+.inapp.in { animation: inapp-in 0.3s ease-out; }
+@keyframes inapp-in { from { opacity: 0; transform: translate(-50%, -8px); } }
 /* Tally's waitlist popup on phones: wider and taller than Tally's own (100% - 40 px, 70% of the height), so more of
    the list shows, as on its page */
 @media (max-width: 576px) {
