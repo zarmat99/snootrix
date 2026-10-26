@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SNOOTRIX Face Editor: draw protogen LED visor faces</title>
-<meta name="description" content="Free face editor for protogen LED visors: draw on two 64×32 panels, make the mouth follow your voice and boop the snoot. Runs in your browser: no sign-up, no AI, nothing uploaded.">
+<title>SNOOTRIX: protogen visor faces in your browser</title>
+<meta name="description" content="Try SNOOTRIX, a plug &amp; play board for protogen LED visors, in your browser: draw faces and animations, talk, boop the snoot. Export for your own firmware too. Free, nothing to install.">
 <meta name="theme-color" content="#0b0716">
 <meta property="og:type" content="website">
-<meta property="og:title" content="SNOOTRIX Face Editor for protogen visors">
+<meta property="og:title" content="SNOOTRIX for protogen visors">
 <meta property="og:description" content="Draw protogen LED visor faces, talk and watch the mouth move, boop the snoot. Free, right in your browser.">
 <meta property="og:image" content="https://zarmat99.github.io/snootrix/og.jpg">
 <meta property="og:url" content="https://zarmat99.github.io/snootrix/">
@@ -22,61 +22,65 @@
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="./" aria-label="SNOOTRIX face editor">
-    <span class="logo">SNOOTRIX</span><span class="tag">face editor</span>
-  </a>
-  <a class="btn cta-mini" href="https://tally.so/r/eqdb1k?src=editor-header" data-waitlist="header" target="_blank" rel="noopener" data-umami-event="waitlist" data-umami-event-where="header">Join the waitlist</a>
+  <a class="brand" href="./" aria-label="SNOOTRIX"><span class="logo">SNOOTRIX</span></a>
+  <a class="btn cta-mini" href="https://tally.so/r/eqdb1k?src=editor-header" data-waitlist="header" target="_blank" rel="noopener">Join the waitlist</a>
 </header>
 
 <main class="app">
-  <section class="stage" aria-label="Visor preview">
+  <section class="stage" aria-label="Your SNOOTRIX">
     <div class="view-wrap">
-    <div class="view3d" id="view3d"><div class="loading" id="loading">Powering up the visor…</div></div>
-    <div class="head-pick" id="headPick" hidden>
-      <select id="headSel" aria-label="Choose the 3D head">
-        <option value="snootrix">Head: SNOOTRIX concept</option>
-        <option value="mk3">Head: M16 MK3 · 2× P3 panels</option>
-        <option value="mk3max">Head: M16 MK3 · 14× MAX7219</option>
-        <option value="mk2max">Head: M16 MK2 · 11× MAX7219</option>
-        <option disabled>──────────</option>
-        <option value="ask">Your head isn't here? Tell me →</option>
-      </select>
-    </div>
-    <div class="stage-bar">
-      <button class="btn pill pink" id="btnBoop" title="Boop the snoot (space bar)">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.2 0 3.6 1.2 4.4 2.4h2C13.8 6.2 15.2 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>
-        Boop</button>
-      <button class="btn pill" id="btnMic" data-umami-event="talk" aria-pressed="false" title="Make the mouth follow your voice">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 0 0-7 0v6A3.5 3.5 0 0 0 12 15zm6-3.5a6 6 0 0 1-12 0H4.2A7.8 7.8 0 0 0 11 19.2V22h2v-2.8a7.8 7.8 0 0 0 6.8-7.7z"/></svg>
-        <span>Talk</span></button>
-      <button class="btn icon" id="btnReset" aria-label="Reset the view" title="Reset the view">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
-    </div>
-    </div>
-    <!-- The SNOOTRIX board in one line, in the words of the head on show (idea 27); waitlist.js fills it in -->
-    <aside class="riga" id="riga" aria-label="The SNOOTRIX board" hidden>
-      <button type="button" class="riga-x" id="rigaClose" aria-label="Hide this line" title="Hide">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button>
-      <p class="riga-tag">SNOOTRIX board</p>
-      <p class="riga-text" id="rigaText" aria-live="polite"></p>
-      <div class="riga-act">
-        <a class="btn pill pink riga-cta" id="rigaCta" href="https://tally.so/r/eqdb1k?src=editor-riga" data-waitlist="riga" target="_blank" rel="noopener" data-umami-event="waitlist" data-umami-event-where="riga">Join the free list</a>
-        <span class="riga-fine">Prototype, nothing for sale yet · 1-minute list</span>
+      <div class="view3d" id="view3d"><div class="loading" id="loading">Powering up…</div></div>
+      <div class="head-pick" id="headPick" hidden>
+        <select id="headSel" aria-label="3D head">
+          <option value="snootrix">SNOOTRIX concept</option>
+          <option value="mk3">M16 MK3 · 2× P3</option>
+          <option value="mk3max">M16 MK3 · 14× MAX7219</option>
+          <option value="mk2max">M16 MK2 · 11× MAX7219</option>
+          <option disabled>──────────</option>
+          <option value="ask">Other head? Tell me →</option>
+        </select>
       </div>
-    </aside>
-    <p class="hint" id="hint">Drag to look around · tap the head to boop it</p>
-    <p class="credit" id="headCredit" hidden></p>
+      <button type="button" class="nav-face prev" id="btnPrev" aria-label="Previous face on SNOOTRIX" title="Previous face">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5 9 12l6.5 6.5-1.5 1.5-8-8 8-8z"/></svg></button>
+      <button type="button" class="nav-face next" id="btnNext" aria-label="Next face on SNOOTRIX" title="Next face">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 18.5 15 12 8.5 5.5 10 4l8 8-8 8z"/></svg></button>
+      <div class="stage-bar">
+        <button class="btn pill pink" id="btnBoop" title="Boop (space bar)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.2 0 3.6 1.2 4.4 2.4h2C13.8 6.2 15.2 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>
+          Boop</button>
+        <button class="btn pill" id="btnMic" data-umami-event="talk" aria-pressed="false" title="The mouth follows your voice">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 0 0-7 0v6A3.5 3.5 0 0 0 12 15zm6-3.5a6 6 0 0 1-12 0H4.2A7.8 7.8 0 0 0 11 19.2V22h2v-2.8a7.8 7.8 0 0 0 6.8-7.7z"/></svg>
+          <span>Talk</span></button>
+        <button class="btn icon" id="btnReset" aria-label="Reset the view" title="Reset the view">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
+      </div>
+    </div>
+    <!-- the device: the simulated SNOOTRIX, or the real one on USB-C -->
+    <div class="dev sim" id="dev" role="group" aria-label="SNOOTRIX">
+      <span class="dot sim" id="devDot" aria-hidden="true"></span>
+      <div class="dev-t"><b id="devName">Simulated SNOOTRIX</b><small id="devSub" aria-live="polite"></small></div>
+      <button type="button" class="btn chip" id="devConnect" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7v4h1v2h-3V5h2l-3-4-3 4h2v8H8v-2.07c.7-.37 1.2-1.08 1.2-1.93 0-1.21-.99-2.2-2.2-2.2S4.8 7.79 4.8 9c0 .85.5 1.56 1.2 1.93V13c0 1.11.89 2 2 2h3v3.05c-.71.37-1.2 1.1-1.2 1.95a2.2 2.2 0 0 0 4.4 0c0-.85-.49-1.58-1.2-1.95V15h3c1.11 0 2-.89 2-2v-2h1V7h-4z"/></svg><span>Connect</span></button>
+      <a class="btn pill pink dev-cta" id="devCta" href="https://tally.so/r/eqdb1k?src=editor-device" data-waitlist="device" target="_blank" rel="noopener">Join the list</a>
+    </div>
   </section>
 
   <section class="panel">
-    <nav class="tabs" role="tablist" aria-label="Editor sections">
-      <button role="tab" aria-selected="true" data-tab="draw">Draw</button>
-      <button role="tab" aria-selected="false" data-tab="faces">Faces</button>
-      <button role="tab" aria-selected="false" data-tab="fx">Effects</button>
-      <button role="tab" aria-selected="false" data-tab="share">Share</button>
+    <nav class="tabs" role="tablist" aria-label="SNOOTRIX">
+      <button role="tab" id="tabBtn-faces" aria-controls="tab-faces" aria-selected="true" data-tab="faces">Faces</button>
+      <button role="tab" id="tabBtn-draw" aria-controls="tab-draw" aria-selected="false" data-tab="draw">Draw</button>
+      <button role="tab" id="tabBtn-remote" aria-controls="tab-remote" aria-selected="false" data-tab="remote" hidden>Remote</button>
+      <button role="tab" id="tabBtn-settings" aria-controls="tab-settings" aria-selected="false" data-tab="settings">Settings</button>
     </nav>
 
-    <div class="tab" id="tab-draw" role="tabpanel">
+    <div class="tab" id="tab-faces" role="tabpanel" aria-labelledby="tabBtn-faces">
+      <div class="sec-h"><h2 id="libTitle">On SNOOTRIX</h2><span class="count" id="libCount"></span></div>
+      <div class="cards" id="libList"></div>
+      <div class="sec-h"><h2>Ready-made</h2></div>
+      <div class="cards" id="presetList"></div>
+    </div>
+
+    <div class="tab" id="tab-draw" role="tabpanel" aria-labelledby="tabBtn-draw" hidden>
       <div class="toolbar" role="toolbar" aria-label="Drawing tools">
         <div class="group">
           <button class="btn icon" data-tool="pen" aria-label="Pen (B)" title="Pen (B)">
@@ -98,18 +102,23 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.5 8c-2.6 0-5 1-6.9 2.6L2 7v9h9l-3.6-3.6A8 8 0 0 1 20.1 16l2.4-.8A10.5 10.5 0 0 0 12.5 8z"/></svg></button>
           <button class="btn icon" id="btnRedo" aria-label="Redo (Ctrl+Y)" title="Redo (Ctrl+Y)">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.4 10.6A10.5 10.5 0 0 0 1.5 15.2l2.4.8A8 8 0 0 1 16.6 12.4L13 16h9V7z"/></svg></button>
-          <button class="btn icon" id="btnClear" aria-label="Clear the panels" title="Clear">
+          <button class="btn icon" id="btnClear" aria-label="Clear" title="Clear">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"/></svg></button>
         </div>
         <div class="group">
-          <button class="btn icon" id="btnImport" aria-label="Import a picture as pixel art" title="Import a picture: dark pixels off, colours snapped to the palette">
+          <button class="btn icon" id="btnImport" aria-label="Import a picture" title="Import a picture">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5zM7.5 9A1.5 1.5 0 1 1 9 7.5 1.5 1.5 0 0 1 7.5 9z"/></svg></button>
           <input type="file" id="fileImport" accept="image/*" hidden>
         </div>
       </div>
       <div class="palette" id="palette" role="group" aria-label="Colours"></div>
+      <div class="seg fx" data-seg="colorMode" role="group" aria-label="Colour effect">
+        <button data-v="drawn">As drawn</button>
+        <button data-v="rainbow">Rainbow</button>
+        <button data-v="pulse">Pulse</button>
+      </div>
       <div class="grid-head">
-        <button class="btn chip" id="btnMirror" aria-pressed="true" title="Mirror (M): both panels match">
+        <button class="btn chip" id="btnMirror" aria-pressed="true" title="Mirror (M)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2h2v20h-2zM9 6L3 18h6zm6 0v12h6z"/></svg>Mirror</button>
         <button class="btn chip" id="btnView">Right panel</button>
         <span class="spacer"></span>
@@ -117,83 +126,41 @@
         <button class="btn icon sm" id="btnZoomIn" aria-label="Zoom in">+</button>
       </div>
       <div class="grid-wrap" id="gridWrap"></div>
-      <p class="small muted" id="gridHint"></p>
+      <div id="animSlot"></div>
+      <div class="draw-out">
+        <button type="button" class="btn send" id="snxSend">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5V14l11-2-11-2V3.5L22 12z"/></svg><span>Send to SNOOTRIX</span></button>
+        <button type="button" class="btn" id="btnExport" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5zM12 16l5-5-1.4-1.4L13 12.2V4h-2v8.2L8.4 9.6 7 11z"/></svg>Export</button>
+      </div>
+      <p class="sent" id="sentLine" role="status" aria-live="polite" hidden></p>
+      <p class="proto-note" id="sendNote">SNOOTRIX is a prototype, not for sale yet.</p>
     </div>
 
-    <div class="tab" id="tab-faces" role="tabpanel" hidden>
-      <h2>Ready-made faces</h2>
-      <div class="faces" id="presetList"></div>
-      <div class="row">
-        <h2>My faces</h2>
-        <button class="btn chip" id="btnSave">Save current face</button>
-      </div>
-      <div class="faces" id="savedList"></div>
-    </div>
+    <div class="tab" id="tab-remote" role="tabpanel" aria-labelledby="tabBtn-remote" hidden></div>
 
-    <div class="tab" id="tab-fx" role="tabpanel" hidden>
-      <h2>Mouth</h2>
-      <div class="seg" data-seg="mouth" role="group" aria-label="Mouth">
-        <button data-v="off">Still</button>
-        <button data-v="open">Opens when you talk</button>
-        <button data-v="wave">Voice wave</button>
+    <div class="tab" id="tab-settings" role="tabpanel" aria-labelledby="tabBtn-settings" hidden>
+      <div id="osSettings"></div>
+      <h2>Visor</h2>
+      <div class="set">
+        <div><span class="t">Blink</span><button type="button" class="tog" role="switch" id="setBlink" aria-label="Blink"></button></div>
+        <div><span class="t">Mouth</span><select id="setMouth" aria-label="Mouth"><option value="open">Opens when you talk</option><option value="wave">Voice wave</option><option value="off">Still</option></select></div>
+        <div class="col"><span class="t">Microphone</span><input type="range" id="sens" min="0" max="1" step="0.05" aria-label="Microphone sensitivity"></div>
+        <div class="col"><span class="t">Brightness</span><input type="range" id="bright" min="0.3" max="1.4" step="0.05" aria-label="Brightness of the 3D head"></div>
       </div>
-      <label class="slider">Microphone sensitivity <input type="range" id="sens" min="0" max="1" step="0.05"></label>
-      <p class="small muted">The microphone is analysed in your browser, frame by frame. Nothing is recorded or sent.</p>
-      <h2>Eyes</h2>
-      <label class="switch"><input type="checkbox" id="blink"> <span>Blink now and then</span></label>
-      <h2>Colours</h2>
-      <div class="seg" data-seg="colorMode" role="group" aria-label="Colour effect">
-        <button data-v="drawn">As drawn</button>
-        <button data-v="rainbow">Rainbow</button>
-        <button data-v="pulse">Pulse</button>
-      </div>
-      <label class="slider">Brightness <input type="range" id="bright" min="0.3" max="1.4" step="0.05"></label>
-    </div>
-
-    <div class="tab" id="tab-share" role="tabpanel" hidden>
-      <h2>Share your face</h2>
-      <div class="share-buttons">
-        <button class="btn big" id="btnImage" data-umami-event="share" data-umami-event-type="image">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/></svg>
-          Save image</button>
-        <button class="btn big" id="btnLink" data-umami-event="share" data-umami-event-type="link">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0zM7.8 17.7a3 3 0 0 1-4.2-4.2l2.8-2.8 1.4 1.4-2.8 2.8a1 1 0 0 0 1.4 1.4l2.8-2.8 1.4 1.4zm8.5-6.4l-1.4-1.4 2.8-2.8a1 1 0 0 0-1.4-1.4l-2.8 2.8-1.4-1.4 2.8-2.8a3 3 0 0 1 4.2 4.2z"/></svg>
-          Copy link</button>
-      </div>
-      <p class="small muted">The image is a portrait card, ready for Instagram, Bluesky or Discord. The link opens this editor with your face on it.</p>
-      <h2>For your firmware</h2>
-      <div class="share-buttons">
-        <button class="btn big" id="btnPng" data-umami-event="export" data-umami-event-type="png">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5zM12 16l5-5-1.4-1.4L13 12.2V4h-2v8.2L8.4 9.6 7 11z"/></svg>
-          Pixel PNG (128×32)</button>
-        <button class="btn big" id="btnBmp" data-umami-event="export" data-umami-event-type="bmp">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5zM12 16l5-5-1.4-1.4L13 12.2V4h-2v8.2L8.4 9.6 7 11z"/></svg>
-          BMP (Matrix Portal)</button>
-        <button class="btn big" id="btnC" data-umami-event="export" data-umami-event-type="c-array">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 16.6L4 12l4.6-4.6L7.2 6 1.2 12l6 6zm6.8 0L20 12l-4.6-4.6L16.8 6l6 6-6 6z"/></svg>
-          C array (Arduino / ESP32)</button>
-        <button class="btn big" id="btnMax" data-umami-event="export" data-umami-event-type="max7219" disabled aria-describedby="maxOff">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 16.6L4 12l4.6-4.6L7.2 6 1.2 12l6 6zm6.8 0L20 12l-4.6-4.6L16.8 6l6 6-6 6z"/></svg>
-          MAX7219 bytes (Arduino)</button>
-      </div>
-      <p class="small muted max-off" id="maxOff"><span id="maxOffText">MAX7219 bytes need a head with MAX7219 modules.</span> <button type="button" class="linkbtn" id="btnUseMax">Switch to M16 MK3 · 14× MAX7219</button></p>
-      <p class="small muted">One value per LED, both 64×32 panels side by side (left panel first), black = off. PNG for image converters such as the ProtoTracer Helper; BMP for CircuitPython boards such as the Adafruit Matrix Portal; C array (RGB565) for Arduino or ESP32 sketches with Adafruit GFX or the HUB75 DMA library: <code>drawRGBBitmap(0, 0, snootrix_face, 128, 32)</code>.</p>
-      <p class="small muted" id="maxNote" hidden>MAX7219 bytes: the face as <span id="maxNoteHead">the 14 modules of the M16 MK3</span> show it, 8 bytes per module<span id="maxNoteOrder"></span> (rows from the top, bit 7 = the leftmost LED seen from the front), for sketches with LedControl or MD_MAX72xx. Depending on how your modules are mounted you may need to flip or rotate them.</p>
-      <div class="cta-card">
-        <h2>Want it on your real visor?</h2>
-        <p>I'm building <b>SNOOTRIX</b>, a plug &amp; play controller board for LED visors: two HUB75 panels or a MAX7219 chain, a mouth that follows your voice, a boop sensor, fans, power from a USB-C power bank. No soldering, no coding. It's a prototype in development and nothing is for sale yet.</p>
-        <a class="btn pill pink" href="https://tally.so/r/eqdb1k?src=editor-card" data-waitlist="card" target="_blank" rel="noopener" data-umami-event="waitlist" data-umami-event-where="card">Join the free waitlist</a>
-      </div>
+      <div id="osSystem"></div>
     </div>
   </section>
 </main>
 
 <section class="about">
   <h2>About</h2>
-  <p>A free tool by Matteo, an independent electronics maker in Italy. The SNOOTRIX concept head and the faces are original designs, made in code and Blender: no AI images. The M16 mk3 head is <a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3” by M16 Studios</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY</a>: simplified for the web, in two versions: with two HUB75 P3 panels and with 14 MAX7219 modules, shown where its design places them. The M16 mk2 head is <a href="https://www.thingiverse.com/thing:4865223" target="_blank" rel="noopener">“Protogen M16 mk2” V1.6.0 by M16 Studios</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY</a>: simplified for the web, with its 11 MAX7219 modules shown where its design places them. This page runs entirely in your browser: your drawings stay on your device and the microphone is never recorded. Visits are counted anonymously with Umami (EU servers, no cookies, no personal data), only to know how many people use the editor; open this page once with <code>?notrack</code> at the end of the address to switch it off on your device. The waitlist is a Tally form (tally.so) that loads only when you open it: what you type there is handled by Tally, not by this page. The editor itself collects no personal data.</p>
+  <p>Made by Matteo, an independent maker in Italy. SNOOTRIX is a prototype: nothing is for sale yet.</p>
+  <p>The SNOOTRIX concept head and the faces are original designs, no AI images. <a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3”</a> and <a href="https://www.thingiverse.com/thing:4865223" target="_blank" rel="noopener">“Protogen M16 mk2” V1.6.0</a> by M16 Studios, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>: simplified for the web, panels and modules added.</p>
+  <p>Privacy: everything runs in your browser and stays on this device; the microphone is never recorded. Visits are counted anonymously (Umami, EU, no cookies; <code>?notrack</code> turns it off). The waitlist is a Tally form, loaded only when you open it.</p>
   <p class="links">
     <a href="https://www.instagram.com/snootrix/" target="_blank" rel="noopener">Instagram @snootrix</a> ·
-    <a href="https://tally.so/r/eqdb1k?src=editor-about" data-waitlist="about" target="_blank" rel="noopener" data-umami-event="waitlist" data-umami-event-where="about">Waitlist</a>
+    <a href="https://tally.so/r/eqdb1k?src=editor-about" data-waitlist="about" target="_blank" rel="noopener">Waitlist</a>
   </p>
 </section>
 
