@@ -367,6 +367,16 @@ input[type="range"] { width: 100%; accent-color: var(--cyan); min-height: 36px; 
 .sheet .acts .btn.danger { color: #ffb4a8; }
 .sheet .acts .btn.danger svg { color: #ff8a73; }
 .sheet .note { margin: 8px 2px 0; font-size: 13px; color: var(--muted); }
+/* "Please connect the board" (SNOOTRIX OS without a board, 27/10) */
+#connectSheet .note { font-size: 14px; line-height: 1.4; color: #e9e3ff; }
+#connectSheet .need-msg:empty { display: none; }
+#connectSheet .need-msg { color: var(--muted); font-size: 13px; }
+.need-acts { display: flex; margin: 14px 0 2px; }
+.need-acts .btn { min-height: 46px; padding: 10px 22px; font-size: 15px; gap: 8px; }
+.need-acts .btn svg { width: 18px; height: 18px; }
+.need-line { margin: 14px 2px 0; font-size: 13.5px; }
+.need-join { color: var(--cyan); text-underline-offset: 2px; }
+.need-shield { position: absolute; inset: 0; z-index: 6; cursor: pointer; border-radius: 12px; }
 .sheet .soon { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; margin: 16px 0 0; padding: 12px 12px 12px 14px; border-radius: 12px; font-size: 14px; color: #f1ecff; }
 .sheet .soon .btn { min-height: 40px; padding: 9px 16px; font-size: 14px; }
 .sheet .shot { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); -webkit-touch-callout: default; user-select: auto; }
