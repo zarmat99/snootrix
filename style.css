@@ -429,6 +429,32 @@ input[type="range"] { width: 100%; accent-color: var(--cyan); min-height: 36px; 
 .inapp-act .btn { min-height: 40px; padding: 9px 18px; }
 .inapp.in { animation: inapp-in 0.3s ease-out; }
 @keyframes inapp-in { from { opacity: 0; transform: translate(-50%, -8px); } }
+/* ...and, from idea 44, a small line over the 3D head as the page opens, until it is closed with × (inapp.js) */
+.inapp-hint {
+  margin: 0 0 8px; padding: 8px 6px 9px 12px;
+  border: 1px solid rgba(255, 190, 60, 0.38); border-radius: 12px;
+  background: rgba(21, 14, 41, 0.86);
+  font-size: 13px; line-height: 1.4; color: #d6cdef;
+  animation: inapp-hint-in 0.35s ease-out;
+}
+.inapp-hint p { margin: 0; text-wrap: pretty; }
+.inapp-hint .lead { display: block; color: #fff; }
+.inapp-hint .lead svg { width: 14px; height: 14px; margin: 0 5px 0 0; vertical-align: -2px; color: var(--gold); }
+.inapp-hint .how { color: #ffd98a; white-space: nowrap; }
+/* the menu button of the app's browser (⋮ or •••), drawn as a small key so it reads as "this button up there" */
+.inapp-hint .key {
+  display: inline-block; min-width: 20px; padding: 0 4px; border-radius: 5px; text-align: center;
+  border: 1px solid rgba(255, 217, 138, 0.55); background: rgba(255, 190, 60, 0.1);
+  font-weight: 800; line-height: 16px; letter-spacing: 0.04em;
+}
+.inapp-hint-x {
+  float: right; width: 36px; height: 36px; margin: -8px -3px -10px 4px; padding: 0;   /* level with the first line only */
+  display: grid; place-items: center; border: 0; border-radius: 50%;
+  background: none; color: var(--muted); cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.inapp-hint-x svg { width: 15px; height: 15px; }
+.inapp-hint-x:hover { color: var(--text); background: rgba(170, 150, 235, 0.14); }
+@keyframes inapp-hint-in { from { opacity: 0; } }
 @media (max-width: 576px) {
   .tally-popup { max-width: calc(100% - 24px) !important; }
   .tally-popup iframe { max-height: 84vh !important; max-height: 84dvh !important; }
