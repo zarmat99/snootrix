@@ -258,6 +258,29 @@ svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
 .palette button[aria-pressed="true"] { border-color: #fff; transform: scale(1.12); }
 .grid-head { display: flex; gap: 6px; align-items: center; margin: 10px 0 8px; }
 .spacer { flex: 1; }
+/* areas: the area to paint (in place of the palette while Areas is on), the note under the grid */
+.toolbar #btnAreas { min-height: 40px; border-radius: 12px; padding: 7px 13px 7px 11px; }
+#btnAreas[aria-pressed="true"] { border-color: #ac5cff; background: rgba(172, 92, 255, 0.18); color: #f1e6ff; box-shadow: 0 0 12px rgba(172, 92, 255, 0.3) inset; }
+.areas-bar { margin: 12px 0 4px; }
+.area-pick { display: flex; flex-wrap: wrap; gap: 6px; }
+.area-pick button {
+  appearance: none; display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 7px 11px 7px 8px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--panel2); color: var(--text);
+  font: 600 13px/1.1 var(--font); cursor: pointer; touch-action: manipulation;
+}
+.area-pick button i { width: 18px; height: 18px; flex: none; border-radius: 5px; background: var(--sw); box-shadow: 0 0 8px color-mix(in srgb, var(--sw) 60%, transparent); }
+.area-pick button[data-area="0"] i { background: repeating-linear-gradient(135deg, var(--sw) 0 3px, rgba(200, 196, 222, 0.35) 3px 6px); }
+.area-pick button[aria-pressed="true"] { border-color: #fff; background: rgba(255, 255, 255, 0.1); }
+.area-foot { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+.area-hint { flex: 1; margin: 0; font-size: 12.5px; line-height: 1.35; color: var(--muted); }
+.area-foot .btn { flex: none; }
+.areas-note { margin: 8px 2px 0; font-size: 13px; line-height: 1.4; color: #e9e0ff; display: grid; gap: 4px; }
+.areas-note p { margin: 0; display: flex; gap: 7px; align-items: flex-start; }
+.areas-note p.warn { color: #ffe2a8; }
+.areas-note p svg { width: 16px; height: 16px; margin-top: 1px; }
+.areas-note p.warn svg { color: var(--gold); }
+.areas-note p.ok svg { color: #ac5cff; }
+.areas-note .linkbtn { margin-left: 4px; }
 .grid-wrap { width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #07050d; }
 .grid { display: block; touch-action: none; cursor: crosshair; }
 .seg { display: flex; flex-wrap: wrap; gap: 6px; }

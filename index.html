@@ -121,12 +121,23 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5zM7.5 9A1.5 1.5 0 1 1 9 7.5 1.5 1.5 0 0 1 7.5 9z"/></svg></button>
           <input type="file" id="fileImport" accept="image/*" hidden>
         </div>
+        <div class="group">
+          <button class="btn chip" id="btnAreas" aria-pressed="false" title="Areas: where the eyes, mouth and nose move (A)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zm2 2v4h4V5zm8-2h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zm8-2h8v8h-8z"/></svg>Areas</button>
+        </div>
       </div>
       <div class="palette" id="palette" role="group" aria-label="Colours"></div>
       <div class="seg fx" data-seg="colorMode" role="group" aria-label="Colour effect">
         <button data-v="drawn">As drawn</button>
         <button data-v="rainbow">Rainbow</button>
         <button data-v="pulse">Pulse</button>
+      </div>
+      <div class="areas-bar" id="areasBar" hidden>
+        <div class="area-pick" id="areaPick" role="group" aria-label="Area to paint"></div>
+        <div class="area-foot">
+          <p class="area-hint">Paint where each part moves, not just its pixels. Fixed cells never move.</p>
+          <button type="button" class="btn chip" id="btnAreasDefault">Default areas</button>
+        </div>
       </div>
       <div class="grid-head">
         <button class="btn chip" id="btnMirror" aria-pressed="true" title="Mirror (M)">
@@ -137,6 +148,7 @@
         <button class="btn icon sm" id="btnZoomIn" aria-label="Zoom in">+</button>
       </div>
       <div class="grid-wrap" id="gridWrap"></div>
+      <div class="areas-note" id="areasNote" role="status" aria-live="polite" hidden></div>
       <div id="animSlot"></div>
       <div class="draw-out">
         <button type="button" class="btn send" id="snxSend">
@@ -167,7 +179,7 @@
 <section class="about">
   <h2>About</h2>
   <p>Made by Matteo, an independent maker in Italy. SNOOTRIX is a prototype: nothing is for sale yet.</p>
-  <p>The SNOOTRIX concept head and the faces are original designs, no AI images. <a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3”</a> and <a href="https://www.thingiverse.com/thing:4865223" target="_blank" rel="noopener">“Protogen M16 mk2” V1.6.0</a> by M16 Studios, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>: simplified for the web, panels and modules added.</p>
+  <p>The SNOOTRIX concept head and the faces are original designs.<a href="https://www.thingiverse.com/thing:4894173" target="_blank" rel="noopener">“Protogen M16 mk3”</a> and <a href="https://www.thingiverse.com/thing:4865223" target="_blank" rel="noopener">“Protogen M16 mk2” V1.6.0</a> by M16 Studios, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>: simplified for the web, panels and modules added.</p>
   <p>Privacy: everything runs in your browser and stays on this device; the microphone is never recorded. Visits are counted anonymously (Umami, EU, no cookies; <code>?notrack</code> turns it off). The waitlist is a Tally form, loaded only when you open it.</p>
   <p class="links">
     <a href="https://www.instagram.com/snootrix/" target="_blank" rel="noopener">Instagram @snootrix</a> ·
