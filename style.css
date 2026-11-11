@@ -132,6 +132,10 @@ svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
 .stage-bar .btn.pink { background: linear-gradient(180deg, #ff5bb6, #e0338f); }
 .stage-bar .btn.down { transform: scale(0.95); }
 .stage-bar .btn.charging { animation: charge 0.26s ease-in-out infinite alternate; }
+/* 11/11: Tilt (held: tilted) and Flappy Boop (on: playing) over the 3D head */
+.stage-bar #btnTilt { touch-action: none; }
+.stage-bar #btnTilt.down { border-color: var(--cyan); color: #dffbff; box-shadow: 0 0 14px rgba(40, 225, 255, 0.45); }
+.stage-bar #btnGame.live, #rmGame.live { border-color: var(--pink); color: #ffd6ec; box-shadow: 0 0 16px rgba(255, 70, 170, 0.45); }
 @keyframes charge { to { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55), 0 0 32px rgba(255, 70, 170, 0.9); } }
 /* the faces of SNOOTRIX, one after the other: the arrows on the sides of the 3D view (the board's ◀ ▶) */
 .nav-face {
