@@ -51,14 +51,22 @@
         <button class="btn pill" id="btnMic" data-umami-event="talk" aria-pressed="false" title="The mouth follows your voice">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 0 0-7 0v6A3.5 3.5 0 0 0 12 15zm6-3.5a6 6 0 0 1-12 0H4.2A7.8 7.8 0 0 0 11 19.2V22h2v-2.8a7.8 7.8 0 0 0 6.8-7.7z"/></svg>
           <span>Talk</span></button>
-        <!-- 11/11: the head's senses (R53: hold = tilt, tap = shake; on a phone its own motion too) and Flappy Boop (R60) -->
-        <button class="btn icon" id="btnTilt" hidden aria-label="Tilt the head: hold to tilt, tap to shake" title="Hold: tilt the head · Tap: shake it">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.6a8.6 8.6 0 0 1 11.6 3.1l1.7-1-.3 5.4-4.8-2.4 1.6-.9a6.4 6.4 0 0 0-8.7-2.3zM12 7.4l5.6 9.7-9.7 5.6-5.6-9.7zm-.6 2.8-6 3.5 3.4 5.9 6-3.5z"/></svg></button>
-        <button class="btn icon" id="btnGame" hidden aria-pressed="false" aria-label="Flappy Boop: play on the visor, boop to flap" title="Flappy Boop">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h10a5 5 0 0 1 5 5v2a5 5 0 0 1-8.5 3.5h-3A5 5 0 0 1 2 13v-2a5 5 0 0 1 5-5zm-.5 3v2h-2v2h2v2h2v-2h2v-2h-2V9zm9 .2a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6zm2.5 2.5a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z"/></svg></button>
-        <button class="btn icon" id="btnReset" aria-label="Reset the view" title="Reset the view">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
+        <!-- 11/11: the head's senses (R53) and Flappy Boop (R60), with their words (Matteo: icons alone said nothing on
+             the phone; then «fai due pulsanti diversi, uno per tilt e uno per inclinazione e togli inclinazione dal
+             telefono»): Tilt = a tap tilts the head to the side and it stays, another tap brings it back; Shake = a shake -->
+        <button class="btn pill" id="btnTilt" hidden aria-pressed="false" aria-label="Tilt the head to the side; tap again to straighten it" title="Tilt the head (tap again: straight)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.6a8.6 8.6 0 0 1 11.6 3.1l1.7-1-.3 5.4-4.8-2.4 1.6-.9a6.4 6.4 0 0 0-8.7-2.3zM12 7.4l5.6 9.7-9.7 5.6-5.6-9.7zm-.6 2.8-6 3.5 3.4 5.9 6-3.5z"/></svg>
+          <span>Tilt</span></button>
+        <button class="btn pill" id="btnShake" hidden aria-label="Shake the head" title="Shake the head">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M0 15h2V9H0v6zm3 2h2V7H3v10zm19-8v6h2V9h-2zm-3 8h2V7h-2v10zM16.5 3h-9C6.67 3 6 3.67 6 4.5v15c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-15c0-.83-.67-1.5-1.5-1.5zM16 19H8V5h8v14z"/></svg>
+          <span>Shake</span></button>
+        <button class="btn pill" id="btnGame" hidden aria-pressed="false" aria-label="Game: Flappy Boop on the visor, boop to flap" title="Flappy Boop: boop to flap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h10a5 5 0 0 1 5 5v2a5 5 0 0 1-8.5 3.5h-3A5 5 0 0 1 2 13v-2a5 5 0 0 1 5-5zm-.5 3v2h-2v2h2v2h2v-2h2v-2h-2V9zm9 .2a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6zm2.5 2.5a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z"/></svg>
+          <span>Game</span></button>
       </div>
+      <!-- the view back as it was: in the top right corner under Visor (11/11, so the bar keeps its words on phones) -->
+      <button class="btn icon view-reset" id="btnReset" aria-label="Reset the view" title="Reset the view">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
     </div>
     <!-- the SNOOTRIX board in one line, in the words of the head on show (idea 27, back with idea 69); waitlist.js fills it in -->
     <aside class="riga" id="riga" aria-label="The SNOOTRIX board" hidden>

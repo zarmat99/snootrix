@@ -127,15 +127,41 @@ svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
   display: flex; gap: 8px; justify-content: center; pointer-events: none;
 }
 .stage-bar .btn { pointer-events: auto; background: rgba(28, 19, 54, 0.82); backdrop-filter: blur(6px); flex: none; }
-/* narrow phones with an animation: Play as an icon, so Boop, Talk, Play and the view keep 36 px and more */
-@media (max-width: 380px) { .stage-bar #btnAnimPlay { width: 40px; padding: 0; } .stage-bar #btnAnimPlay span { display: none; } }
+/* 11/11: every button of the bar keeps its word (Matteo: «a cosa serve il tasto play? non si capisce», then «Togli play
+   da sopra e lascialo solo nella parte di editor»: the animation's Play is only in Draw, with the frames; then «fai due
+   pulsanti diversi, uno per tilt e uno per inclinazione»). Out of Draw the bar is Boop, Talk, Tilt, Shake, Game; in
+   Draw Boop and Talk. Five words with their icons need about 440 px: on phones (up to 459 px) the bar is a little
+   tighter and Talk, Tilt, Shake and Game show the word alone (Boop keeps its heart), so they stay on one line from 360 px */
+.view-wrap { container: stage / inline-size; }
+@media (max-width: 459px) {
+  .stage-bar { gap: 6px; left: 6px; right: 6px; }
+  .stage-bar .btn { padding: 0 11px; gap: 5px; font-size: 13px; }
+  .stage-bar .btn svg { width: 16px; height: 16px; }
+  .stage-bar #btnMic svg, .stage-bar #btnTilt svg, .stage-bar #btnShake svg, .stage-bar #btnGame svg { display: none; }
+}
+/* the same by the 3D view's own width (a view under 520 px, e.g. a small tablet): the media query above is for
+   browsers without container queries */
+@container stage (max-width: 520px) {
+  .stage-bar { gap: 6px; left: 6px; right: 6px; }
+  .stage-bar .btn { padding: 0 11px; gap: 5px; font-size: 13px; }
+  .stage-bar .btn svg { width: 16px; height: 16px; }
+  .stage-bar #btnMic svg, .stage-bar #btnTilt svg, .stage-bar #btnShake svg, .stage-bar #btnGame svg { display: none; }
+}
+/* the view back as it was: top right, under Visor */
+.view-reset {
+  position: absolute; top: 54px; right: 10px; z-index: 2; width: 36px; min-height: 36px;
+  background: rgba(28, 19, 54, 0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.view-reset svg { width: 18px; height: 18px; }
 .stage-bar .btn.pink { background: linear-gradient(180deg, #ff5bb6, #e0338f); }
 .stage-bar .btn.down { transform: scale(0.95); }
 .stage-bar .btn.charging { animation: charge 0.26s ease-in-out infinite alternate; }
-/* 11/11: Tilt (held: tilted) and Flappy Boop (on: playing) over the 3D head */
-.stage-bar #btnTilt { touch-action: none; }
-.stage-bar #btnTilt.down { border-color: var(--cyan); color: #dffbff; box-shadow: 0 0 14px rgba(40, 225, 255, 0.45); }
+/* 11/11: Tilt (on: the head stays tilted) and Flappy Boop (on: playing) over the 3D head */
+.stage-bar #btnTilt[aria-pressed="true"] { border-color: var(--cyan); color: #dffbff; box-shadow: 0 0 14px rgba(40, 225, 255, 0.45); }
 .stage-bar #btnGame.live, #rmGame.live { border-color: var(--pink); color: #ffd6ec; box-shadow: 0 0 16px rgba(255, 70, 170, 0.45); }
+/* Flappy Boop waits for a boop (BOOP TO FLAP, or the score with BOOP TO RETRY): Boop calls softly */
+.stage-bar #btnBoop.hint { animation: boophint 1.1s ease-in-out infinite; }
+@keyframes boophint { 50% { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), 0 0 28px rgba(255, 70, 170, 0.95); } }
 @keyframes charge { to { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55), 0 0 32px rgba(255, 70, 170, 0.9); } }
 /* the faces of SNOOTRIX, one after the other: the arrows on the sides of the 3D view (the board's ◀ ▶) */
 .nav-face {
