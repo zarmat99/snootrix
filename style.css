@@ -565,3 +565,41 @@ input[type="range"] { width: 100%; accent-color: var(--cyan); min-height: 36px; 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+/* 14/11, B (Matteo: «Versione B»; «tenere sbloccate tutte le funzioni al momento»): the strip under the 3D head with
+   every function of SNOOTRIX OS by group, each tried on the screen; nothing over the head. One line on the function
+   touched and what the board does by itself; NEW for 7 days after a function comes out. In Draw only Boop and Talk. */
+.fx-strip { margin: 10px 0 0; padding: 8px; border-radius: 16px; background: rgba(28, 19, 54, 0.72); border: 1px solid rgba(255, 255, 255, 0.1); }
+.fx-groups { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.fx-groups::-webkit-scrollbar { display: none; }
+.fx-groups button { flex: none; appearance: none; border: 1px solid rgba(255, 255, 255, 0.14); background: transparent; color: inherit; border-radius: 999px; padding: 6px 12px; font: 700 13px/1.2 var(--font); min-height: 36px; cursor: pointer; touch-action: manipulation; }
+.fx-groups button[aria-selected="true"] { background: var(--pink); border-color: var(--pink); color: #fff; }
+.fx-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.fx-chips .btn { min-height: 40px; padding: 0 13px; font-size: 13.5px; flex: none; gap: 6px; touch-action: manipulation; }
+.fx-chips .btn svg { width: 16px; height: 16px; }
+.fx-chips .btn.pink { background: linear-gradient(180deg, #ff5bb6, #e0338f); border-color: transparent; color: #fff; touch-action: none; }
+.fx-chips .btn.down { transform: scale(0.95); }
+.fx-chips .btn.charging { animation: charge 0.26s ease-in-out infinite alternate; }
+.fx-chips #btnBoop.hint { animation: boophint 1.1s ease-in-out infinite; }
+.fx-chips .btn[aria-pressed="true"], .fx-chips .btn[aria-expanded="true"] { border-color: #ffd34d; color: #fff3c4; box-shadow: 0 0 12px rgba(255, 205, 50, 0.45); }
+.fx-chips #btnTilt[aria-pressed="true"] { border-color: var(--cyan); color: #dffbff; box-shadow: 0 0 14px rgba(40, 225, 255, 0.45); }
+.fx-chips #btnGame.live { border-color: var(--pink); color: #ffd6ec; box-shadow: 0 0 16px rgba(255, 70, 170, 0.45); }
+.fx-chips .fx-off, .fx-groups .fx-off { display: none !important; }
+.fx-new { display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 999px; background: #ffd34d; color: #241600; font: 800 9.5px/1.5 var(--font); letter-spacing: 0.06em; }
+.fx-cap { margin: 8px 2px 0; font-size: 12.5px; line-height: 1.4; min-height: 2.8em; color: #ddd8f0; }
+.fx-cap b { color: #fff; }
+.fx-cap .fx-board { display: flex; align-items: center; gap: 6px; color: #9fe9ff; margin-top: 1px; }
+.fx-cap .fx-board svg { width: 14px; height: 14px; fill: currentColor; flex: none; }
+.fx-pulse { animation: fxPulse 1.1s ease-in-out 4; }
+@keyframes fxPulse { 50% { box-shadow: 0 0 0 4px rgba(255, 211, 77, 0.55), 0 0 22px rgba(255, 211, 77, 0.7); } }
+.fx-strip.draw .fx-groups, .fx-strip.draw .fx-cap { display: none; }
+.fx-strip.draw .fx-chips { margin-top: 0; }
+.fx-strip.draw .fx-chips .btn { display: none !important; }
+.fx-strip.draw .fx-chips #btnBoop, .fx-strip.draw .fx-chips #btnMic { display: inline-flex !important; }
+/* short screens (small phones, the apps' own browsers): the strip tighter, its line only once a function is touched, so
+   the board's line under it starts in the first screen as before */
+@media (max-height: 700px) {
+  .fx-strip { margin-top: 6px; padding: 6px; }
+  .fx-groups button { min-height: 32px; padding: 4px 11px; }
+  .fx-chips { margin-top: 6px; }
+  .fx-strip:not(.touched) .fx-cap { display: none; }
+}
