@@ -456,6 +456,12 @@ input[type="range"] { width: 100%; accent-color: var(--cyan); min-height: 36px; 
 .need-acts .btn { min-height: 46px; padding: 10px 22px; font-size: 15px; gap: 8px; }
 .need-acts .btn svg { width: 18px; height: 18px; }
 .need-line { margin: 14px 2px 0; font-size: 13.5px; }
+/* 13/11, idea 111: the sheet as the reservation page (the board, two lines, the button to the short form) */
+#connectSheet .res-board { display: block; width: 100%; height: auto; border-radius: 12px; margin: 2px 0 10px; background: #22301f; }
+#connectSheet .res-head { margin: 0 2px; font-size: 17px; font-weight: 700; line-height: 1.3; color: #fff; }
+#connectSheet .res-sub { margin: 4px 2px 0; font-size: 14px; color: #e9e3ff; }
+#connectSheet .res-acts { display: flex; margin: 12px 0 14px; }
+#connectSheet .res-cta { width: 100%; justify-content: center; min-height: 48px; font-size: 16px; }
 .need-join { color: var(--cyan); text-underline-offset: 2px; }
 .need-shield { position: absolute; inset: 0; z-index: 6; cursor: pointer; border-radius: 12px; }
 .sheet .soon { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; margin: 16px 0 0; padding: 12px 12px 12px 14px; border-radius: 12px; font-size: 14px; color: #f1ecff; }
