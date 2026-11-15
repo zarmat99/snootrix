@@ -15,6 +15,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="stylesheet" href="style.css">
+<link rel="preload" href="assets/SpaceGrotesk.woff" as="font" type="font/woff" crossorigin>
 <!-- Anonymous visit counts (Umami Cloud, EU servers, no cookies), only on the public site. ?noi or ?notrack once switches
      them off on a device (our own phones, PCs and tests), ?track switches them back on; this runs before the counter. -->
 <script>try { var q = new URLSearchParams(location.search); if (q.has('noi') || q.has('notrack')) localStorage.setItem('umami.disabled', '1'); if (q.has('track')) localStorage.removeItem('umami.disabled'); } catch (e) {}</script>
@@ -22,8 +23,14 @@
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="./" aria-label="SNOOTRIX"><span class="logo">SNOOTRIX</span></a>
-  <a class="btn cta-mini" href="https://tally.so/r/eqdb1k?src=editor-header" data-waitlist="header" target="_blank" rel="noopener">Join the waitlist</a>
+  <!-- 15/11, step 1 of the designer (D1): the logo in LEDs (the firmware's 5x7 font, src/nuova/led.js, drawn once here)
+       and «Reserve one free» always in sight (Matteo: «ok parole lista») -->
+  <a class="brand" href="./" aria-label="SNOOTRIX"><span class="logo led-logo"><svg class="led" width="102" height="22" viewBox="-4 -4 102 22" aria-hidden="true"><defs><filter id="ledLogo" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="1.80" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g fill="#28e1ff" filter="url(#ledLogo)"><circle cx="3.0" cy="1.0" r="0.92"/><circle cx="5.0" cy="1.0" r="0.92"/><circle cx="7.0" cy="1.0" r="0.92"/><circle cx="9.0" cy="1.0" r="0.92"/><circle cx="1.0" cy="3.0" r="0.92"/><circle cx="1.0" cy="5.0" r="0.92"/><circle cx="3.0" cy="7.0" r="0.92"/><circle cx="5.0" cy="7.0" r="0.92"/><circle cx="7.0" cy="7.0" r="0.92"/><circle cx="9.0" cy="9.0" r="0.92"/><circle cx="9.0" cy="11.0" r="0.92"/><circle cx="1.0" cy="13.0" r="0.92"/><circle cx="3.0" cy="13.0" r="0.92"/><circle cx="5.0" cy="13.0" r="0.92"/><circle cx="7.0" cy="13.0" r="0.92"/><circle cx="13.0" cy="1.0" r="0.92"/><circle cx="21.0" cy="1.0" r="0.92"/><circle cx="13.0" cy="3.0" r="0.92"/><circle cx="21.0" cy="3.0" r="0.92"/><circle cx="13.0" cy="5.0" r="0.92"/><circle cx="15.0" cy="5.0" r="0.92"/><circle cx="21.0" cy="5.0" r="0.92"/><circle cx="13.0" cy="7.0" r="0.92"/><circle cx="17.0" cy="7.0" r="0.92"/><circle cx="21.0" cy="7.0" r="0.92"/><circle cx="13.0" cy="9.0" r="0.92"/><circle cx="19.0" cy="9.0" r="0.92"/><circle cx="21.0" cy="9.0" r="0.92"/><circle cx="13.0" cy="11.0" r="0.92"/><circle cx="21.0" cy="11.0" r="0.92"/><circle cx="13.0" cy="13.0" r="0.92"/><circle cx="21.0" cy="13.0" r="0.92"/><circle cx="27.0" cy="1.0" r="0.92"/><circle cx="29.0" cy="1.0" r="0.92"/><circle cx="31.0" cy="1.0" r="0.92"/><circle cx="25.0" cy="3.0" r="0.92"/><circle cx="33.0" cy="3.0" r="0.92"/><circle cx="25.0" cy="5.0" r="0.92"/><circle cx="33.0" cy="5.0" r="0.92"/><circle cx="25.0" cy="7.0" r="0.92"/><circle cx="33.0" cy="7.0" r="0.92"/><circle cx="25.0" cy="9.0" r="0.92"/><circle cx="33.0" cy="9.0" r="0.92"/><circle cx="25.0" cy="11.0" r="0.92"/><circle cx="33.0" cy="11.0" r="0.92"/><circle cx="27.0" cy="13.0" r="0.92"/><circle cx="29.0" cy="13.0" r="0.92"/><circle cx="31.0" cy="13.0" r="0.92"/><circle cx="39.0" cy="1.0" r="0.92"/><circle cx="41.0" cy="1.0" r="0.92"/><circle cx="43.0" cy="1.0" r="0.92"/><circle cx="37.0" cy="3.0" r="0.92"/><circle cx="45.0" cy="3.0" r="0.92"/><circle cx="37.0" cy="5.0" r="0.92"/><circle cx="45.0" cy="5.0" r="0.92"/><circle cx="37.0" cy="7.0" r="0.92"/><circle cx="45.0" cy="7.0" r="0.92"/><circle cx="37.0" cy="9.0" r="0.92"/><circle cx="45.0" cy="9.0" r="0.92"/><circle cx="37.0" cy="11.0" r="0.92"/><circle cx="45.0" cy="11.0" r="0.92"/><circle cx="39.0" cy="13.0" r="0.92"/><circle cx="41.0" cy="13.0" r="0.92"/><circle cx="43.0" cy="13.0" r="0.92"/><circle cx="49.0" cy="1.0" r="0.92"/><circle cx="51.0" cy="1.0" r="0.92"/><circle cx="53.0" cy="1.0" r="0.92"/><circle cx="55.0" cy="1.0" r="0.92"/><circle cx="57.0" cy="1.0" r="0.92"/><circle cx="53.0" cy="3.0" r="0.92"/><circle cx="53.0" cy="5.0" r="0.92"/><circle cx="53.0" cy="7.0" r="0.92"/><circle cx="53.0" cy="9.0" r="0.92"/><circle cx="53.0" cy="11.0" r="0.92"/><circle cx="53.0" cy="13.0" r="0.92"/><circle cx="61.0" cy="1.0" r="0.92"/><circle cx="63.0" cy="1.0" r="0.92"/><circle cx="65.0" cy="1.0" r="0.92"/><circle cx="67.0" cy="1.0" r="0.92"/><circle cx="61.0" cy="3.0" r="0.92"/><circle cx="69.0" cy="3.0" r="0.92"/><circle cx="61.0" cy="5.0" r="0.92"/><circle cx="69.0" cy="5.0" r="0.92"/><circle cx="61.0" cy="7.0" r="0.92"/><circle cx="63.0" cy="7.0" r="0.92"/><circle cx="65.0" cy="7.0" r="0.92"/><circle cx="67.0" cy="7.0" r="0.92"/><circle cx="61.0" cy="9.0" r="0.92"/><circle cx="65.0" cy="9.0" r="0.92"/><circle cx="61.0" cy="11.0" r="0.92"/><circle cx="67.0" cy="11.0" r="0.92"/><circle cx="61.0" cy="13.0" r="0.92"/><circle cx="69.0" cy="13.0" r="0.92"/><circle cx="75.0" cy="1.0" r="0.92"/><circle cx="77.0" cy="1.0" r="0.92"/><circle cx="79.0" cy="1.0" r="0.92"/><circle cx="77.0" cy="3.0" r="0.92"/><circle cx="77.0" cy="5.0" r="0.92"/><circle cx="77.0" cy="7.0" r="0.92"/><circle cx="77.0" cy="9.0" r="0.92"/><circle cx="77.0" cy="11.0" r="0.92"/><circle cx="75.0" cy="13.0" r="0.92"/><circle cx="77.0" cy="13.0" r="0.92"/><circle cx="79.0" cy="13.0" r="0.92"/><circle cx="85.0" cy="1.0" r="0.92"/><circle cx="93.0" cy="1.0" r="0.92"/><circle cx="85.0" cy="3.0" r="0.92"/><circle cx="93.0" cy="3.0" r="0.92"/><circle cx="87.0" cy="5.0" r="0.92"/><circle cx="91.0" cy="5.0" r="0.92"/><circle cx="89.0" cy="7.0" r="0.92"/><circle cx="87.0" cy="9.0" r="0.92"/><circle cx="91.0" cy="9.0" r="0.92"/><circle cx="85.0" cy="11.0" r="0.92"/><circle cx="93.0" cy="11.0" r="0.92"/><circle cx="85.0" cy="13.0" r="0.92"/><circle cx="93.0" cy="13.0" r="0.92"/></g></svg></span></a>
+  <span class="hdr-gap"></span>
+  <!-- step 3 (D3): Settings leaves the tab bar for the ⚙ of the header (the same tab, same id; a sheet at step 6) -->
+  <button type="button" class="hdr-set" id="tabBtn-settings" data-tab="settings" aria-controls="tab-settings" aria-pressed="false" aria-label="Settings" title="Settings">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="9" cy="6" r="2.2" class="k"/><circle cx="16" cy="12" r="2.2" class="k"/><circle cx="7" cy="18" r="2.2" class="k"/></svg></button>
+  <a class="btn cta-mini" href="https://tally.so/r/eqdb1k?src=editor-header" data-waitlist="header" target="_blank" rel="noopener">Reserve one free</a>
 </header>
 
 <main class="app">
@@ -44,10 +51,52 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5 9 12l6.5 6.5-1.5 1.5-8-8 8-8z"/></svg></button>
       <button type="button" class="nav-face next" id="btnNext" aria-label="Next face on SNOOTRIX" title="Next face">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 18.5 15 12 8.5 5.5 10 4l8 8-8 8z"/></svg></button>
+      <!-- 14/11 (B): on the head only what it shows: the fog and DEFOG n (the buttons are in the strip under it) -->
+      <div class="fog-chip" id="fogChip" role="status" aria-live="polite" hidden><i aria-hidden="true"></i><span id="fogText"></span></div>
       <!-- the view back as it was: in the top right corner under Visor (11/11, so the bar keeps its words on phones) -->
       <button class="btn icon view-reset" id="btnReset" aria-label="Reset the view" title="Reset the view">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
+      <!-- step 2 (D2): how to boop, on the head until the first boop; away from the snout -->
+      <p class="boop-hint" id="boopHint" aria-hidden="true">Tap the snout to boop<span class="os-bap"> · the top of the head to bap</span></p>
     </div>
+    <!-- 15/11, step 2 of the designer (D2): Boop and Talk big under the head on every tab, the tabs right after them. The
+         ids, the events and what the two buttons do stay the same; the strip of B goes under the tabs. -->
+    <div class="dock" id="dock" role="group" aria-label="Boop and Talk">
+      <button class="btn pink" id="btnBoop" data-fx="boop" data-g="react" data-g2="game" title="Boop (space bar)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.2 0 3.6 1.2 4.4 2.4h2C13.8 6.2 15.2 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>
+        Boop</button>
+      <button class="btn" id="btnMic" data-umami-event="talk" data-fx="talk" data-g="voice" data-g2="react" aria-pressed="false" title="The mouth follows your voice">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 0 0-7 0v6A3.5 3.5 0 0 0 12 15zm6-3.5a6 6 0 0 1-12 0H4.2A7.8 7.8 0 0 0 11 19.2V22h2v-2.8a7.8 7.8 0 0 0 6.8-7.7z"/></svg>
+        <span>Talk</span></button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <nav class="tabs tabs-ico" role="tablist" aria-label="SNOOTRIX">
+      <button role="tab" id="tabBtn-try" aria-controls="tab-try" aria-selected="true" data-tab="try">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18.5 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg><span>Try</span></button>
+      <button role="tab" id="tabBtn-faces" aria-controls="tab-faces" aria-selected="false" data-tab="faces">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3.5"/><path d="M7 10.5h2.5M14.5 10.5H17M8 15c1.2 1 2.5 1.5 4 1.5s2.8-.5 4-1.5"/></svg><span>Faces</span></button>
+      <button role="tab" id="tabBtn-draw" aria-controls="tab-draw" aria-selected="false" data-tab="draw">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4.3-1.1L18.6 8.6a2.1 2.1 0 0 0-3-3L5.2 15.8z"/><path d="M13.8 7.4l2.9 2.9"/></svg><span>Draw</span></button>
+      <button role="tab" id="tabBtn-remote" aria-controls="tab-remote" aria-selected="false" data-tab="remote" hidden>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2.5V6M12 2.5V6M15 2.5V6M9 18v3.5M12 18v3.5M15 18v3.5M2.5 9H6M2.5 12H6M2.5 15H6M18 9h3.5M18 12h3.5M18 15h3.5"/></svg><i class="sdot sim" id="tabDot" aria-hidden="true"></i><span>Remote</span></button>
+    </nav>
+    <!-- 15/11, step 3 (D3): the strip of B is the Try tab; the line of the board at its end -->
+    <div class="tab" id="tab-try" role="tabpanel" aria-labelledby="tabBtn-try">
+    <!-- 15/11, step 4 (D4): from a Reel (?f=): its title in LEDs (main.js, REELS), «Try it on the head» plays the Reel's
+         moment on the head, then the list (where = reel). Once a visit; × closes it. -->
+    <section class="reel-card" id="reelCard" aria-labelledby="reelTitle" hidden>
+      <button type="button" class="reel-x" id="reelClose" aria-label="Close" title="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button>
+      <p class="reel-from"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path class="f" d="M10 8.5v7l6-3.5z"/></svg>From the Reel</p>
+      <div class="reel-title" id="reelTitle" role="heading" aria-level="2"></div>
+      <p class="reel-line" id="reelLine"></p>
+      <div class="reel-acts" id="reelActs">
+        <button type="button" class="btn pink reel-try" id="reelTry">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>Try it on the head</span></button>
+      </div>
+    </section>
     <!-- 14/11, B (Matteo: «Versione B»; «tenere sbloccate tutte le funzioni al momento»): what SNOOTRIX does, under the
          3D head and never over it. The groups, the functions of the group chosen (each one tried on the screen, no board
          needed), one line on the one touched with what the board does by itself. main.js (fx) fills the line, NEW and
@@ -57,16 +106,11 @@
         <button type="button" role="tab" data-g="react" aria-selected="true">Reactions</button>
         <button type="button" role="tab" data-g="voice" aria-selected="false">Voice</button>
         <button type="button" role="tab" data-g="head" aria-selected="false" data-os>Head</button>
+        <button type="button" role="tab" data-g="visor" aria-selected="false" data-os>Visor</button>
         <button type="button" role="tab" data-g="modes" aria-selected="false" data-os>Modes</button>
         <button type="button" role="tab" data-g="game" aria-selected="false" data-os>Game</button>
       </div>
       <div class="fx-chips" id="fxChips">
-        <button class="btn chip pink" id="btnBoop" data-fx="boop" data-g="react" data-g2="game" title="Boop (space bar)">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.2 0 3.6 1.2 4.4 2.4h2C13.8 6.2 15.2 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>
-          Boop</button>
-        <button class="btn chip" id="btnMic" data-umami-event="talk" data-fx="talk" data-g="voice" data-g2="react" aria-pressed="false" title="The mouth follows your voice">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 0 0-7 0v6A3.5 3.5 0 0 0 12 15zm6-3.5a6 6 0 0 1-12 0H4.2A7.8 7.8 0 0 0 11 19.2V22h2v-2.8a7.8 7.8 0 0 0 6.8-7.7z"/></svg>
-          <span>Talk</span></button>
         <button type="button" class="btn chip" id="fxTen" data-fx="meltdown" data-g="react" data-os>10 boops</button>
         <button type="button" class="btn chip" id="fxBap" data-fx="bap" data-g="react" data-os>Bap</button>
         <button type="button" class="btn chip" id="btnTilt" data-fx="tilt" data-g="head" data-os aria-pressed="false" aria-label="Tilt the head to the side; tap again to straighten it" title="Tilt the head (tap again: straight)">
@@ -76,6 +120,8 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M0 15h2V9H0v6zm3 2h2V7H3v10zm19-8v6h2V9h-2zm-3 8h2V7h-2v10zM16.5 3h-9C6.67 3 6 3.67 6 4.5v15c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-15c0-.83-.67-1.5-1.5-1.5zM16 19H8V5h8v14z"/></svg>
           <span>Shake</span></button>
         <button type="button" class="btn chip" id="fxMove" data-fx="move" data-g="head" data-os>Move</button>
+        <button type="button" class="btn chip" id="btnBreathe" data-fx="breathe" data-g="visor" data-os data-new="2026-11-15" aria-label="Breathe on the visor (simulated fog)" title="A breath on the visor (simulated)">Breathe</button>
+        <button type="button" class="btn chip" id="btnDefog" data-fx="defog" data-g="visor" data-os data-new="2026-11-15" aria-label="Defog: the fans at full speed for 20 seconds" title="Fans at 100 % for 20 s">Defog</button>
         <button type="button" class="btn chip" id="fxMusic" data-fx="music" data-g="modes" data-os aria-pressed="false">Music</button>
         <button type="button" class="btn chip" id="fxSleep" data-fx="sleep" data-g="modes" data-os aria-pressed="false">Sleep</button>
         <button type="button" class="btn chip" id="fxHud" data-fx="hud" data-g="modes" data-os>HUD</button>
@@ -93,27 +139,19 @@
       <p class="riga-tag">SNOOTRIX board</p>
       <p class="riga-text" id="rigaText"></p>
       <div class="riga-act">
-        <a class="btn pill pink riga-cta" id="rigaCta" href="https://tally.so/r/eqdb1k?src=editor-riga" data-waitlist="riga" target="_blank" rel="noopener">Join the free list</a>
+        <a class="btn pill pink riga-cta" id="rigaCta" href="https://tally.so/r/eqdb1k?src=editor-riga" data-waitlist="riga" target="_blank" rel="noopener">Reserve one free</a>
         <span class="riga-fine">Prototype, nothing for sale yet · <span class="nw">1-minute list</span></span>
       </div>
     </aside>
+    </div>
     <!-- the device: the real one on USB-C, or the preview on screen until one is connected -->
     <div class="dev sim" id="dev" role="group" aria-label="SNOOTRIX">
       <span class="dot sim" id="devDot" aria-hidden="true"></span>
       <div class="dev-t"><b id="devName">SNOOTRIX</b><small id="devSub" aria-live="polite"></small></div>
       <button type="button" class="btn chip" id="devConnect" hidden>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7v4h1v2h-3V5h2l-3-4-3 4h2v8H8v-2.07c.7-.37 1.2-1.08 1.2-1.93 0-1.21-.99-2.2-2.2-2.2S4.8 7.79 4.8 9c0 .85.5 1.56 1.2 1.93V13c0 1.11.89 2 2 2h3v3.05c-.71.37-1.2 1.1-1.2 1.95a2.2 2.2 0 0 0 4.4 0c0-.85-.49-1.58-1.2-1.95V15h3c1.11 0 2-.89 2-2v-2h1V7h-4z"/></svg><span>Connect</span></button>
-      <a class="btn pill pink dev-cta" id="devCta" href="https://tally.so/r/eqdb1k?src=editor-device" data-waitlist="device" target="_blank" rel="noopener">Join the list</a>
+      <a class="btn pill pink dev-cta" id="devCta" href="https://tally.so/r/eqdb1k?src=editor-device" data-waitlist="device" target="_blank" rel="noopener">Reserve one free</a>
     </div>
-  </section>
-
-  <section class="panel">
-    <nav class="tabs" role="tablist" aria-label="SNOOTRIX">
-      <button role="tab" id="tabBtn-faces" aria-controls="tab-faces" aria-selected="true" data-tab="faces">Faces</button>
-      <button role="tab" id="tabBtn-draw" aria-controls="tab-draw" aria-selected="false" data-tab="draw">Draw</button>
-      <button role="tab" id="tabBtn-remote" aria-controls="tab-remote" aria-selected="false" data-tab="remote" hidden>Remote</button>
-      <button role="tab" id="tabBtn-settings" aria-controls="tab-settings" aria-selected="false" data-tab="settings">Settings</button>
-    </nav>
 
     <div class="tab" id="tab-faces" role="tabpanel" aria-labelledby="tabBtn-faces">
       <div class="sec-h"><h2 id="libTitle">On SNOOTRIX</h2><span class="count" id="libCount"></span></div>
@@ -214,7 +252,7 @@
   <p>Privacy: everything runs in your browser and stays on this device; the microphone is never recorded. Visits are counted anonymously (Umami, EU, no cookies; <code>?notrack</code> turns it off). The waitlist is a Tally form, loaded only when you open it.</p>
   <p class="links">
     <a href="https://www.instagram.com/snootrix/" target="_blank" rel="noopener">Instagram @snootrix</a> ·
-    <a href="https://tally.so/r/eqdb1k?src=editor-about" data-waitlist="about" target="_blank" rel="noopener">Waitlist</a>
+    <a href="https://tally.so/r/eqdb1k?src=editor-about" data-waitlist="about" target="_blank" rel="noopener">Reserve one free</a>
   </p>
 </section>
 
