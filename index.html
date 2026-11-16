@@ -231,16 +231,22 @@
 
     <div class="tab" id="tab-remote" role="tabpanel" aria-labelledby="tabBtn-remote" hidden></div>
 
-    <div class="tab" id="tab-settings" role="tabpanel" aria-labelledby="tabBtn-settings" hidden>
-      <div id="osSettings"></div>
-      <h2>Visor</h2>
+    <!-- 16/11, step 6 of the designer (D6): Settings is a sheet, opened by the ⚙ of the header (main.js moves this block
+         into it and back). On top what is of this editor, then the board's own (under its shield until a board is
+         connected; in Board from step 5). The same controls, the same ids. -->
+    <div class="tab set-sheet" id="tab-settings" role="group" aria-label="Settings" hidden>
+      <div class="sec-h"><h2>On screen</h2><span class="count">this editor</span></div>
       <div class="set">
+        <div id="setHeadRow"><span class="t">3D head</span><select id="setHead" aria-label="3D head"></select></div>
+        <div class="col"><span class="t">Brightness</span><input type="range" id="bright" min="0.3" max="1.4" step="0.05" aria-label="Brightness of the 3D head"></div>
         <div><span class="t">Blink</span><button type="button" class="tog" role="switch" id="setBlink" aria-label="Blink"></button></div>
         <div><span class="t">Mouth</span><select id="setMouth" aria-label="Mouth"><option value="open">Opens when you talk</option><option value="wave">Voice wave</option><option value="off">Still</option></select></div>
-        <div class="col"><span class="t">Microphone</span><input type="range" id="sens" min="0" max="1" step="0.05" aria-label="Microphone sensitivity"></div>
-        <div class="col"><span class="t">Brightness</span><input type="range" id="bright" min="0.3" max="1.4" step="0.05" aria-label="Brightness of the 3D head"></div>
+        <div class="col"><span class="t">Microphone<small>sensitivity</small></span><input type="range" id="sens" min="0" max="1" step="0.05" aria-label="Microphone sensitivity"></div>
       </div>
+      <div class="sec-h" id="setBoardH"><h2>Your board</h2><span class="count">with the board connected</span></div>
+      <div id="osSettings"></div>
       <div id="osSystem"></div>
+      <p class="set-foot">Made by Matteo in Italy · faces and the SNOOTRIX head are original · M16 MK3 and MK2 by M16 Studios, CC BY 4.0 · <button type="button" class="linkbtn" id="setPrivacy">Privacy</button></p>
     </div>
   </section>
 </main>

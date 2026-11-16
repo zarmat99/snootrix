@@ -760,6 +760,52 @@ svg.i .k { fill: var(--c-bg); }
 .reel-res { flex: 1 1 auto; }
 .reel-fine { flex: 1 1 100%; margin: 0; font-size: 11.5px; line-height: 1.3; color: var(--c-text-3); }
 .fx-chips .btn.fx-gold { outline: 2px solid var(--c-new); outline-offset: 3px; box-shadow: var(--glow-gold); }
+/* 16/11 (B1): the card of the Reel B1 (?f=import): under «Try it on the head» the visitor's own picture; the gold on the
+   Import button of Draw while the card is there */
+.reel-acts .btn.reel-pick { flex: 1 1 100%; min-height: var(--tap); font-size: 15px; border-color: var(--c-line-2); }
+.reel-acts .btn.reel-pick svg { color: var(--c-cyan); }
+#btnImport.fx-gold { outline: 2px solid var(--c-new); outline-offset: 3px; box-shadow: var(--glow-gold); }
+/* ---------- 16/11, step 6 of the designer (D6): Settings as a sheet, from the ⚙ of the header. On phones it comes up
+   from the bottom, edge to edge, with its handle; on computers it is the page's usual sheet, in the middle. On top «On
+   screen» (this editor: 3D head, brightness, blink, mouth, microphone), then «Your board». ---------- */
+#settingsSheet .sheet-h b { font-size: 20px; letter-spacing: -0.01em; }
+.set-sheet .sec-h h2 { margin: 16px 0 9px; }
+.set-sheet > .sec-h:first-child h2 { margin-top: 6px; }
+.set-sheet .sec-h .count { font-size: 12.5px; color: var(--c-text-3); }
+.set-sheet .set > div { min-height: 54px; padding: 8px 14px; }
+.set-sheet .set .t small { display: block; margin-top: 1px; font-size: 12px; color: var(--c-text-3); }
+.set-sheet .set select { border-color: var(--c-line-2); max-width: 62%; min-height: var(--tap); }
+.set-sheet .tog { height: var(--tap); }
+.set-sheet .tog::before { top: 8px; }
+.set-sheet .tog::after { top: 12px; }
+.set-sheet .sys .btn { min-height: var(--tap); }
+.set-sheet .set > div.col { grid-template-columns: minmax(96px, 0.8fr) minmax(0, 1.3fr); }
+.set-sheet input[type="range"] { -webkit-appearance: none; appearance: none; height: var(--tap); background: transparent; cursor: pointer; }
+.set-sheet input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--c-cyan), var(--c-pink)) 0 0 / var(--v, 50%) 100% no-repeat, rgba(255, 255, 255, 0.14); }
+.set-sheet input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; margin-top: -9px; border-radius: 50%; border: 0; background: #fff; box-shadow: 0 0 0 4px rgba(40, 225, 255, 0.25), 0 2px 6px rgba(0, 0, 0, 0.5); }
+.set-sheet input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: rgba(255, 255, 255, 0.14); }
+.set-sheet input[type="range"]::-moz-range-progress { height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--c-cyan), var(--c-pink)); }
+.set-sheet input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; border: 0; background: #fff; box-shadow: 0 0 0 4px rgba(40, 225, 255, 0.25), 0 2px 6px rgba(0, 0, 0, 0.5); }
+.tog[aria-checked="true"]::before { background: linear-gradient(90deg, var(--c-pink), #b04cff); }
+.set-foot { margin: 16px 2px 0; font-size: 12.5px; line-height: 1.45; color: var(--c-text-3); text-wrap: pretty; }
+.set-foot .linkbtn { display: inline-block; padding: 9px 6px; margin: -9px -6px; }   /* a thumb's height, the line as it is */
+@media (max-width: 699px) {
+  .sheet-back:has(> #settingsSheet) { padding: 0; }
+  #settingsSheet { width: 100%; max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); border-radius: var(--r-l) var(--r-l) 0 0; padding: 8px 16px calc(22px + env(safe-area-inset-bottom, 0px)); }
+  #settingsSheet.grad { border: 1px solid var(--c-line-2) !important; border-bottom: 0 !important; background: linear-gradient(180deg, #221545, #160e2e 42%) !important; }
+  #settingsSheet::before { content: ""; display: block; width: 40px; height: 4px; margin: 0 auto 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.24); }
+}
+/* ---------- 16/11, step 8 of the designer (D8; Matteo: «Ok avviso al suo posto»): in the apps' own browsers the notice
+   is not on top of the page any more. The same words and the same «Open in Chrome», in the gold of a notice, under Send
+   and Export in Draw and, on Android, by the board's bar in the Remote. No ×. ---------- */
+.inapp-hint.inapp-at {
+  margin: 12px 0 0; padding: 10px 12px 11px;
+  border-color: rgba(255, 211, 77, 0.55); border-radius: var(--r-s); background: rgba(255, 211, 77, 0.07);
+  font-size: 13px; line-height: 1.4; color: #fff1c7; animation: none;
+}
+.inapp-hint.inapp-at .inapp-hint-or { color: #cfc39c; }
+.inapp-hint.inapp-at .inapp-hint-go { min-height: var(--tap); padding: 0 14px 0 16px; font-size: 14px; }
+#tab-remote > .inapp-hint.inapp-at { margin: 0 0 12px; }
 /* short screens (small phones, the apps' own browsers): the strip tighter, its line only once a function is touched, so
    the board's line under it starts in the first screen as before */
 @media (max-height: 700px) {
