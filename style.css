@@ -820,6 +820,82 @@ svg.i .k { fill: var(--c-bg); }
 .inapp-hint.inapp-at .inapp-hint-or { color: #cfc39c; }
 .inapp-hint.inapp-at .inapp-hint-go { min-height: var(--tap); padding: 0 14px 0 16px; font-size: 14px; }
 #tab-remote > .inapp-hint.inapp-at { margin: 0 0 12px; }
+/* ---------- 16/11, step 7 of the designer (D7): Faces and Draw in order, the face live on top. Faces: «Draw your own»
+   and «Import a picture» as cards, then yours and the ready-made ones. Draw: the tools in two rows (draw and undo; brush,
+   Areas and Import with their names), the panel as three segments, «Use it» (Send, Export, Share link). On phones, once
+   the 3D head has scrolled away, its face live in the header in place of the logo, and the tabs stuck under the header.
+   ---------- */
+.hdr-face {
+  appearance: none; flex: none; display: grid; place-items: center; width: clamp(88px, calc(100vw - 226px), 128px); min-height: var(--tap); padding: 4px 5px; margin: 0;
+  border: 1px solid rgba(40, 225, 255, 0.45); border-radius: var(--r-xs); background: #05030b; cursor: pointer;
+  box-shadow: 0 0 12px rgba(40, 225, 255, 0.18); -webkit-tap-highlight-color: transparent;
+}
+/* 128 px from 354 px up; narrower on the smallest phones (320 px), so the header keeps ⚙ and «Reserve one free» inside */
+.hdr-face canvas { display: block; width: 100%; border-radius: 4px; }
+.top.face-on .brand { display: none; }
+.card.new { gap: 3px; padding: 14px 8px 12px; }
+.card.new svg.i { width: 26px; height: 26px; margin-bottom: 5px; color: var(--c-cyan); fill: none; }
+.card.new small { display: block; font: 500 12.5px/1.25 var(--f-ui); color: var(--c-text-3); }
+.sec-h .sec-tip { display: inline-flex; align-items: center; gap: 4px; }
+.sec-h .sec-tip svg { width: 13px; height: 13px; }
+/* the tools in two rows: draw | undo, redo, clear; then brush | Areas, Import */
+#tab-draw .toolbar { row-gap: 4px; column-gap: 10px; }
+#tab-draw .toolbar::after { content: ""; order: 3; flex: 0 0 100%; }
+#tab-draw .toolbar .g-tools { order: 1; }
+#tab-draw .toolbar .g-hist { order: 2; }
+#tab-draw .toolbar .brush { order: 4; }
+#tab-draw .toolbar .g-areas { order: 5; }
+#tab-draw .toolbar .g-import { order: 6; margin-left: -4px; }
+#tab-draw .toolbar .g-hist, #tab-draw .toolbar .g-areas { padding-left: 10px; border-left: 1px solid var(--c-line-2); }
+#tab-draw .toolbar #btnAreas, #tab-draw .toolbar #btnImport { min-height: var(--tap); border-radius: var(--r-s); padding: 0 13px 0 11px; font-size: 14px; gap: 7px; }
+#tab-draw .toolbar #btnImport svg { width: 18px; height: 18px; }
+/* the panel to draw on: three segments in place of «Right panel» in turn */
+#btnView { display: none; }
+.view-seg { flex: 0 1 auto; flex-wrap: nowrap; gap: 3px; padding: 3px; border: 1px solid var(--c-line); border-radius: var(--r-s); background: rgba(5, 3, 11, 0.35); }
+.view-seg button { flex: 0 0 auto; min-height: 36px; padding: 0 12px; border: 1px solid transparent; border-radius: 9px; background: none; color: var(--c-text-2); font: 600 13.5px/1 var(--f-ui); }
+.view-seg button[aria-pressed="true"] { border-color: var(--c-line-2); background: var(--c-surface-3); color: #fff; }
+.view-seg button:disabled { opacity: 0.38; cursor: not-allowed; }
+.grid-head #btnMirror { padding: 0 13px 0 11px; }
+/* «Use it» */
+.use-h h2 { margin: 18px 0 10px; }
+.draw-out.draw-out { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: 0; }
+.draw-out .send { grid-column: 1 / -1; }
+.draw-out #btnExport, .draw-out #btnShare { padding: 10px 12px; }
+@media (max-width: 374px) {
+  #tab-draw .toolbar { column-gap: 7px; }
+  #tab-draw .toolbar .group { gap: 5px; }
+  #tab-draw .toolbar .btn.icon { width: 40px; }
+  #tab-draw .toolbar .g-hist, #tab-draw .toolbar .g-areas { padding-left: 7px; }
+  #tab-draw .toolbar #btnAreas, #tab-draw .toolbar #btnImport { padding: 0 11px 0 9px; }
+  .grid-head { gap: 5px; }
+  .grid-head #btnMirror { padding: 0 10px 0 8px; }
+  .view-seg button { padding: 0 9px; }
+}
+/* on phones: the tabs stay under the header while the page scrolls; the Remote's own screen gives way to the header's */
+@media (max-width: 899px) {
+  .tabs.tabs-ico { position: sticky; top: var(--hdr-h, 61px); z-index: 9; background: rgba(11, 7, 22, 0.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .panel > .tab { scroll-margin-top: calc(var(--hdr-h, 61px) + 56px); }
+  .rm-screen { position: relative; top: auto; }
+}
+/* ---------- 16/11, step 9 of the designer (D9): the computer, 900 px and wider. Two columns: on the left the 3D head,
+   Boop and Talk, and Try always open under them; on the right Faces, Draw and the Remote. The head gives room to what is
+   under it (--side-h, main.js) so the left column stays in the window while the right one scrolls; when even a small
+   head does not fit (a short window) the column scrolls with the page (.tall). In Draw, Try waits as in B (the head
+   shows the drawing) and the head takes its room; «Use it» comes right under the grid, the animation after it; the
+   colours in one row where there is room. ---------- */
+@media (min-width: 900px) {
+  .app { grid-template-columns: minmax(0, 1.1fr) minmax(460px, 0.9fr); gap: 18px; padding: 18px 18px 0; max-width: 1440px; }
+  .stage { top: calc(var(--hdr-h, 61px) + 14px); }
+  .stage.tall { position: relative; top: auto; }
+  .view3d { aspect-ratio: auto; height: clamp(280px, calc(100vh - var(--hdr-h, 61px) - var(--side-h, 400px) - 34px), 660px); max-height: none; }
+  .stage > #tab-try { margin: 12px 0 0; }
+  .stage > #tab-try > .fx-strip { padding: 12px; }
+  .stage > #tab-try:has(> .fx-strip.draw) { display: none; }
+  .panel { padding: 10px 16px 18px; }
+  #tab-draw { display: flex; flex-direction: column; }
+  #tab-draw > #animSlot { order: 1; }
+  #tab-draw > .palette { gap: 6px; }
+}
 /* short screens (small phones, the apps' own browsers): the strip tighter, its line only once a function is touched, so
    the board's line under it starts in the first screen as before */
 @media (max-height: 700px) {
