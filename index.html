@@ -69,6 +69,18 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 0 0-7 0v6A3.5 3.5 0 0 0 12 15zm6-3.5a6 6 0 0 1-12 0H4.2A7.8 7.8 0 0 0 11 19.2V22h2v-2.8a7.8 7.8 0 0 0 6.8-7.7z"/></svg>
         <span>Talk</span></button>
     </div>
+    <!-- 16/11, a proposal for a picture only (switch RIGA, off; Matteo decides after E32): the line of the board back right
+         under Boop and Talk, above the tabs, on every tab, as before the tabs moved up. The same element, the same words. -->
+    <aside class="riga" id="riga" aria-label="The SNOOTRIX board" hidden>
+      <button type="button" class="riga-x" id="rigaClose" aria-label="Hide this line" title="Hide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button>
+      <p class="riga-tag">SNOOTRIX board</p>
+      <p class="riga-text" id="rigaText"></p>
+      <div class="riga-act">
+        <a class="btn pill pink riga-cta" id="rigaCta" href="https://tally.so/r/eqdb1k?src=editor-riga" data-waitlist="riga" target="_blank" rel="noopener">Reserve one free</a>
+        <span class="riga-fine">Prototype, nothing for sale yet · <span class="nw">1-minute list</span></span>
+      </div>
+    </aside>
   </section>
 
   <section class="panel">
@@ -133,16 +145,6 @@
       <p class="fx-cap" id="fxCap" aria-live="polite"></p>
     </div>
     <!-- the SNOOTRIX board in one line, in the words of the head on show (idea 27, back with idea 69); waitlist.js fills it in -->
-    <aside class="riga" id="riga" aria-label="The SNOOTRIX board" hidden>
-      <button type="button" class="riga-x" id="rigaClose" aria-label="Hide this line" title="Hide">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button>
-      <p class="riga-tag">SNOOTRIX board</p>
-      <p class="riga-text" id="rigaText"></p>
-      <div class="riga-act">
-        <a class="btn pill pink riga-cta" id="rigaCta" href="https://tally.so/r/eqdb1k?src=editor-riga" data-waitlist="riga" target="_blank" rel="noopener">Reserve one free</a>
-        <span class="riga-fine">Prototype, nothing for sale yet · <span class="nw">1-minute list</span></span>
-      </div>
-    </aside>
     </div>
     <!-- the device: the real one on USB-C, or the preview on screen until one is connected -->
     <div class="dev sim" id="dev" role="group" aria-label="SNOOTRIX">

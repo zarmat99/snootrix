@@ -765,6 +765,20 @@ svg.i .k { fill: var(--c-bg); }
 .reel-acts .btn.reel-pick { flex: 1 1 100%; min-height: var(--tap); font-size: 15px; border-color: var(--c-line-2); }
 .reel-acts .btn.reel-pick svg { color: var(--c-cyan); }
 #btnImport.fx-gold { outline: 2px solid var(--c-new); outline-offset: 3px; box-shadow: var(--glow-gold); }
+/* ---------- 16/11, a proposal for a picture only (switch RIGA, off): the line of the board right under Boop and Talk,
+   above the tabs, on every tab. On short phones held upright the 3D view gives back what it must and the line is a little
+   tighter, so the line with its button and the four tabs stay in the first screen (360 x 640). While the card of a Reel is
+   on top of Try the line waits (the card has its own «Reserve one free»). The same words. ---------- */
+.stage > .riga { margin: 10px 0 0; }
+.app:has(#reelCard:not([hidden])) .stage > .riga { display: none; }
+@media (max-width: 899px) and (max-height: 700px) and (orientation: portrait) {
+  .app:not(:has(#reelCard:not([hidden]))) .stage:has(> .riga:not([hidden])) .view3d { max-height: max(calc(52vh - 62px), min(52vh, calc(100vh - 372px))); }
+  .stage > .riga { margin-top: 8px; padding: 8px 10px 9px 12px; }
+  .stage > .riga .riga-tag { margin-bottom: 2px; }
+  .stage > .riga .riga-text { margin-bottom: 7px; font-size: 13.5px; line-height: 1.34; }
+  .stage > .riga .riga-fine { font-size: 11.5px; }
+  .app:not(:has(#reelCard:not([hidden]))) .stage:has(> .riga:not([hidden])) .dock { margin-top: 8px; }
+}
 /* ---------- 16/11, step 6 of the designer (D6): Settings as a sheet, from the ⚙ of the header. On phones it comes up
    from the bottom, edge to edge, with its handle; on computers it is the page's usual sheet, in the middle. On top «On
    screen» (this editor: 3D head, brightness, blink, mouth, microphone), then «Your board». ---------- */
