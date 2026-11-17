@@ -128,6 +128,7 @@
       <div class="fx-chips" id="fxChips">
         <button type="button" class="btn chip" id="fxTen" data-fx="meltdown" data-g="react" data-os>10 boops</button>
         <button type="button" class="btn chip" id="fxBap" data-fx="bap" data-g="react" data-os>Bap</button>
+        <button type="button" class="btn chip" id="btnSay" data-fx="say" data-g="voice" data-os data-new="2026-11-17" aria-expanded="false" aria-controls="sayForm" aria-label="Type to talk" title="Type to talk">Say</button>
         <button type="button" class="btn chip" id="btnTilt" data-fx="tilt" data-g="head" data-os aria-pressed="false" aria-label="Tilt the head to the side; tap again to straighten it" title="Tilt the head (tap again: straight)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.6a8.6 8.6 0 0 1 11.6 3.1l1.7-1-.3 5.4-4.8-2.4 1.6-.9a6.4 6.4 0 0 0-8.7-2.3zM12 7.4l5.6 9.7-9.7 5.6-5.6-9.7zm-.6 2.8-6 3.5 3.4 5.9 6-3.5z"/></svg>
           <span>Tilt</span></button>
@@ -145,6 +146,10 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h10a5 5 0 0 1 5 5v2a5 5 0 0 1-8.5 3.5h-3A5 5 0 0 1 2 13v-2a5 5 0 0 1 5-5zm-.5 3v2h-2v2h2v2h2v-2h2v-2h-2V9zm9 .2a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6zm2.5 2.5a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z"/></svg>
           <span>Flappy Boop</span></button>
       </div>
+      <form class="say-box" id="sayForm" hidden>
+        <input id="sayIn" maxlength="60" autocomplete="off" spellcheck="false" aria-label="Type to talk: what SNOOTRIX says" placeholder="Type your name…">
+        <button type="submit" class="btn pill pink" id="saySend">Say it</button>
+      </form>
       <p class="fx-cap" id="fxCap" aria-live="polite"></p>
     </div>
     <!-- the SNOOTRIX board in one line, in the words of the head on show (idea 27, back with idea 69); waitlist.js fills it in -->

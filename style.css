@@ -156,6 +156,15 @@ svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
 .stage-bar2 .btn { pointer-events: auto; background: rgba(28, 19, 54, 0.72); backdrop-filter: blur(6px); flex: none; min-height: 34px; padding: 0 12px; font-size: 13px; }
 .stage-bar2 .btn[aria-pressed="true"], .stage-bar2 .btn[aria-expanded="true"] { border-color: #ffd34d; color: #fff3c4; box-shadow: 0 0 14px rgba(255, 205, 50, 0.5); }
 .stage-bar2 #btnDefog.live { border-color: var(--cyan); color: #dffbff; box-shadow: 0 0 16px rgba(40, 225, 255, 0.55); }
+.say-box {
+  position: absolute; left: 10px; right: 10px; top: 96px; z-index: 3;   /* over the eyes' level, never over the mouth it animates */
+  display: flex; gap: 6px; justify-content: center;
+}
+.say-box input {
+  flex: 1 1 auto; max-width: 260px; min-width: 0; height: 38px; padding: 0 12px; border-radius: 19px;
+  border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(14, 9, 30, 0.88); color: #fff; font: inherit; font-size: 15px;
+}
+.say-box .btn { flex: none; }
 .fog-chip {
   position: absolute; left: 10px; top: 54px; z-index: 2; display: flex; align-items: center; gap: 7px;
   padding: 6px 10px; border-radius: 16px; font-size: 12px; color: #e8e4ff;
@@ -614,6 +623,7 @@ input[type="range"] { width: 100%; accent-color: var(--cyan); min-height: 36px; 
 .fx-strip.draw .fx-chips { margin-top: 0; }
 .fx-strip.draw .fx-chips .btn { display: none !important; }
 .fx-strip.draw .fx-chips #btnBoop, .fx-strip.draw .fx-chips #btnMic { display: inline-flex !important; }
+.fx-strip .say-box { position: static; margin-top: 8px; justify-content: flex-start; }
 .fx-chips #btnDefog.live { border-color: var(--cyan); color: #dffbff; box-shadow: 0 0 16px rgba(40, 225, 255, 0.55); }
 /* ---------- 15/11, step 1 of the designer (D1; Matteo: «Ok design», «ok parole lista», «Ok tutto» = «ok subito»).
    The variables of the design system (design/sistema/snx.css), the old names as their aliases; Space Grotesk from the
@@ -907,3 +917,16 @@ svg.i .k { fill: var(--c-bg); }
 /* 15/11 (D1): on short screens too the groups stay 36 px; the logo's link a thumb tall */
 @media (max-height: 700px) { .fx-groups button { min-height: 36px; padding: 0 12px; } }
 .top .brand { min-height: var(--tap); }
+/* 17/11 (R62 in the new page): the box of Say in the style of the designer, under Say in Try's Voice: as tall as the
+   buttons (44 px), the whole row; a 16 px text, so phones do not zoom in when it gets the cursor; cyan while typing */
+.fx-strip .say-box { gap: 8px; margin-top: 10px; }
+.fx-strip .say-box input {
+  max-width: none; height: var(--tap); padding: 0 16px; border-radius: var(--r-pill);
+  border: 1px solid var(--c-line-2); background: rgba(5, 3, 11, 0.55); color: var(--c-text); font: 500 16px/1.2 var(--f-ui);
+}
+.fx-strip .say-box input::placeholder { color: var(--c-text-3); opacity: 1; }
+.fx-strip .say-box input:focus { outline: none; border-color: rgba(40, 225, 255, 0.8); box-shadow: var(--glow-cyan); }
+.fx-strip .say-box .btn { padding: 0 18px; font-size: 15px; }
+/* 17/11 (SAY): the card of the Reel of the mouth (?f=say): under «Try it on the head», «Type a word» */
+.reel-acts .btn.reel-type { flex: 1 1 100%; min-height: var(--tap); font-size: 15px; border-color: var(--c-line-2); }
+.reel-acts .btn.reel-type svg { color: var(--c-cyan); }
