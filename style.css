@@ -932,3 +932,47 @@ svg.i .k { fill: var(--c-bg); }
 .reel-acts .btn.reel-type svg { color: var(--c-cyan); }
 /* 17/11 (B2): the card of the Reel of the phone as the visor (?f=visor): the gold on the Visor button of the 3D view */
 #btnVisor.fx-gold { outline: 2px solid var(--c-new); outline-offset: 3px; box-shadow: var(--glow-gold); }
+/* ---------- 17/11, step 5 of the designer (D5; Matteo, 14/11: «Ok board»): the Remote is Board. On top the device in
+   one line («No board · preview on screen», «Have one? Connect»); without a board the reservation (the board's name in
+   LEDs, the render and the lines of idea 111, «Reserve one free»), then the remote of the visor and the board's own
+   settings, dimmed under their shields with «Needs the board». The sheet of a locked function: «Try … on the 3D head»
+   and «Have one? Connect» under the reservation. In the sheet of Settings, «Your board» is one row to Board. ---------- */
+#tab-remote > .dev { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; min-height: var(--tap); margin: 0 0 12px; padding: 0; border: 0; border-radius: 0; background: none; }
+.dev-pill { display: inline-flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; height: 34px; padding: 0 13px 0 11px; border-radius: var(--r-pill); border: 1px solid rgba(180, 140, 255, 0.5); background: rgba(5, 3, 11, 0.4); }
+.dev.board .dev-pill { border-color: rgba(30, 224, 120, 0.55); }
+.dev-pill .dot { width: 9px; height: 9px; }
+.dev-pill .dev-t { display: block; flex: 0 1 auto; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 600 13px/1 var(--f-ui); color: var(--c-text-2); }
+.dev-pill .dev-t b, .dev-pill .dev-t small { display: inline; font: inherit; color: inherit; }
+.dev-pill .dev-t small::before { content: " · "; }
+.dev.board .dev-pill .dev-t { color: #c9ffe0; }
+#tab-remote .dev-link, #connectSheet .need-connect { display: inline-flex; align-items: center; min-height: var(--tap); font: 600 14px/1 var(--f-ui); white-space: nowrap; }
+#tab-remote > .dev .dev-cta { display: none; }
+.board-hero { position: relative; padding: 16px; border-radius: var(--r-l); border: 1px solid transparent; background: linear-gradient(170deg, #2a1550, #120b26) padding-box, var(--grad-edge) border-box; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); }
+.board-led { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2px 6px; margin: 0 0 12px; line-height: 0; }
+.board-led svg.led { display: block; width: auto; height: auto; max-width: 100%; }   /* 18/11: width auto, as the Reels' titles: the page's svg rule made it 20 px wide */
+.board-render { display: block; width: 100%; height: auto; aspect-ratio: 720 / 559; border-radius: var(--r-s); border: 1px solid rgba(255, 255, 255, 0.1); background: #22301f; }
+.board-head { margin: 14px 0 4px; font: 700 18px/1.25 var(--f-ui); color: #fff; text-wrap: pretty; }
+.board-sub { margin: 0 0 14px; font-size: 14px; color: var(--c-text-2); }
+.board-hero .board-cta { display: flex; width: 100%; min-height: var(--tap-xl); border-radius: var(--r-m); font-size: 16.5px; }
+.board-done { margin: 0; padding: 12px 0 2px; text-align: center; font: 600 15px/1.3 var(--f-ui); color: var(--c-cyan-soft); }
+.board-fine { margin: 8px 0 0; text-align: center; font-size: 11.5px; line-height: 1.3; color: var(--c-text-3); }
+.board-sec { align-items: center; margin: 20px 0 10px; }
+.board-sec h2 { margin: 0; color: var(--c-text-2); }
+.need-chip { display: inline-flex; align-items: center; gap: 6px; flex: none; height: 30px; padding: 0 11px 0 9px; border-radius: var(--r-pill); border: 1px solid rgba(180, 140, 255, 0.5); background: rgba(180, 140, 255, 0.1); font: 700 12px/1 var(--f-ui); letter-spacing: 0.02em; color: var(--c-sim); white-space: nowrap; }
+.need-chip svg { width: 15px; height: 15px; }
+.board-go { display: inline-flex; align-items: center; min-height: var(--tap); font: 600 14px/1 var(--f-ui); }
+#tab-remote:not(.locked) .need-chip, #tab-remote.locked .board-go { display: none; }
+#tab-remote.locked > .rm, #tab-remote.locked > #osSettings, #tab-remote.locked > #osSystem { opacity: 0.42; filter: saturate(0.6); }
+#tab-remote.locked .rm-screen { display: none; }
+#boardSetH { scroll-margin-top: calc(var(--hdr-h, 61px) + 64px); }
+#tab-remote > #boardHero + .inapp-hint.inapp-at { margin: 12px 0 0; }
+#tab-remote > #osSettings > h2:first-child { margin-top: 0 !important; }
+#connectSheet .need-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; margin: 0 0 2px; }
+#connectSheet .need-try { min-height: var(--tap); padding: 0 16px 0 13px; border-radius: var(--r-pill); border-color: var(--c-line-2); background: transparent; font-size: 14.5px; gap: 8px; }
+#connectSheet .need-try svg { width: 18px; height: 18px; color: var(--c-cyan); }
+#connectSheet .need-msg { margin-top: 6px; }
+.set-go { appearance: none; display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; margin: 0; padding: 10px 12px 10px 14px; border-radius: 12px; border: 1px solid var(--c-line); background: rgba(5, 3, 11, 0.35); color: var(--c-text); text-align: left; font: 500 14px/1.3 var(--f-ui); cursor: pointer; }
+.set-go .t { flex: 1; min-width: 0; }
+.set-go .t small { display: block; margin-top: 3px; font-size: 12.5px; color: var(--c-text-3); }
+.set-go svg { flex: none; width: 20px; height: 20px; color: var(--c-text-3); }
+.set-go:hover { border-color: var(--c-line-2); }
